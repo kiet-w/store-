@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AdminOrderResponseDto = exports.UpdateOrderStatusDto = exports.AdminOrderQueryDto = void 0;
+exports.AdminOrderQueryDto = void 0;
 const class_validator_1 = require("class-validator");
 const client_1 = require("@prisma/client");
 const pagination_query_dto_1 = require("../../common/dto/pagination-query.dto");
@@ -22,40 +22,4 @@ __decorate([
     (0, class_validator_1.IsEnum)(client_1.OrderStatus),
     __metadata("design:type", String)
 ], AdminOrderQueryDto.prototype, "status", void 0);
-class UpdateOrderStatusDto {
-    status;
-}
-exports.UpdateOrderStatusDto = UpdateOrderStatusDto;
-__decorate([
-    (0, class_validator_1.IsEnum)(client_1.OrderStatus),
-    __metadata("design:type", String)
-], UpdateOrderStatusDto.prototype, "status", void 0);
-class AdminOrderResponseDto {
-    id;
-    status;
-    total;
-    address;
-    createdAt;
-    updatedAt;
-    user;
-    items;
-    constructor(order) {
-        this.id = order.id;
-        this.status = order.status;
-        this.total = order.total.toString();
-        this.address = order.address;
-        this.createdAt = order.createdAt;
-        this.updatedAt = order.updatedAt;
-        this.user = order.user;
-        this.items = order.items.map((item) => ({
-            id: item.id,
-            productId: item.productId,
-            productName: item.productName,
-            productPrice: item.productPrice.toString(),
-            quantity: item.quantity,
-            subtotal: item.subtotal.toString(),
-        }));
-    }
-}
-exports.AdminOrderResponseDto = AdminOrderResponseDto;
-//# sourceMappingURL=order.dto.js.map
+//# sourceMappingURL=admin-order-query.dto.js.map

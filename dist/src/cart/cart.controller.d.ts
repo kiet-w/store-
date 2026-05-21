@@ -8,82 +8,17 @@ export declare class CartController {
     constructor(cartService: CartService);
     getCart(request: Request & {
         user: JwtPayloadDto;
-    }): Promise<import("../common/interfaces/api-response.interface").ApiResponse<{
-        id: number;
-        items: Array<{
-            id: number;
-            productId: number;
-            name: string;
-            slug: string;
-            price: string;
-            quantity: number;
-            subtotal: string;
-        }>;
-        totalItems: number;
-        subtotal: string;
-    }>>;
+    }): Promise<import("../common/interfaces/api-response.interface").ApiResponse<import("./dto/cart-response.dto").CartResponseDto>>;
     addItem(request: Request & {
         user: JwtPayloadDto;
-    }, dto: AddCartItemDto): Promise<import("../common/interfaces/api-response.interface").ApiResponse<{
-        id: number;
-        items: Array<{
-            id: number;
-            productId: number;
-            name: string;
-            slug: string;
-            price: string;
-            quantity: number;
-            subtotal: string;
-        }>;
-        totalItems: number;
-        subtotal: string;
-    }>>;
+    }, dto: AddCartItemDto): Promise<import("../common/interfaces/api-response.interface").ApiResponse<import("./dto/cart-response.dto").CartResponseDto>>;
     updateItem(request: Request & {
         user: JwtPayloadDto;
-    }, id: number, dto: UpdateCartItemDto): Promise<import("../common/interfaces/api-response.interface").ApiResponse<{
-        id: number;
-        items: Array<{
-            id: number;
-            productId: number;
-            name: string;
-            slug: string;
-            price: string;
-            quantity: number;
-            subtotal: string;
-        }>;
-        totalItems: number;
-        subtotal: string;
-    }>>;
+    }, id: number, dto: UpdateCartItemDto): Promise<import("../common/interfaces/api-response.interface").ApiResponse<import("./dto/cart-response.dto").CartResponseDto>>;
     removeItem(request: Request & {
         user: JwtPayloadDto;
-    }, id: number): Promise<import("../common/interfaces/api-response.interface").ApiResponse<{
-        id: number;
-        items: Array<{
-            id: number;
-            productId: number;
-            name: string;
-            slug: string;
-            price: string;
-            quantity: number;
-            subtotal: string;
-        }>;
-        totalItems: number;
-        subtotal: string;
-    }>>;
+    }, id: number): Promise<import("../common/interfaces/api-response.interface").ApiResponse<import("./dto/cart-response.dto").CartResponseDto>>;
     clearCart(request: Request & {
         user: JwtPayloadDto;
-    }): Promise<import("../common/interfaces/api-response.interface").ApiResponse<{
-        id: number;
-        items: Array<{
-            id: number;
-            productId: number;
-            name: string;
-            slug: string;
-            price: string;
-            quantity: number;
-            subtotal: string;
-        }>;
-        totalItems: number;
-        subtotal: string;
-    }>>;
+    }): Promise<import("../common/interfaces/api-response.interface").ApiResponse<import("./dto/cart-response.dto").CartResponseDto>>;
 }

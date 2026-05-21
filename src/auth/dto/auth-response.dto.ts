@@ -1,39 +1,11 @@
-import { UserRole } from '@prisma/client';
-import { Type, Exclude } from 'class-transformer';
+import { Type } from 'class-transformer';
 import {
   IsBoolean,
-  IsEmail,
-  IsEnum,
-  IsInt,
   IsOptional,
   IsString,
   ValidateNested,
 } from 'class-validator';
-
-export class UserResponseDto {
-  @IsInt()
-  id!: number;
-
-  @IsEmail()
-  email!: string;
-
-  @IsString()
-  @IsOptional()
-  name!: string | null;
-
-  @IsEnum(UserRole)
-  role!: UserRole;
-
-  @Exclude()
-  password?: string;
-
-  @Exclude()
-  refreshToken?: string | null;
-
-  constructor(partial: Partial<UserResponseDto>) {
-    Object.assign(this, partial);
-  }
-}
+import { UserResponseDto } from './user-response.dto';
 
 export class AuthResponseDto {
   @IsBoolean()

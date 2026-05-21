@@ -1,9 +1,12 @@
 import type { Request } from 'express';
 import { JwtPayloadDto } from '../auth/dto/jwt-payload.dto';
 import { AdminService } from './admin.service';
-import { CreateCategoryDto, UpdateCategoryDto } from './dto/category.dto';
-import { AdminOrderQueryDto, UpdateOrderStatusDto } from './dto/order.dto';
-import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
+import { AdminOrderQueryDto } from './dto/admin-order-query.dto';
+import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 export declare class AdminController {
     private readonly adminService;
     constructor(adminService: AdminService);
@@ -104,8 +107,8 @@ export declare class AdminController {
         deletedAt: Date | null;
         categoryId: number;
     }>>;
-    getOrders(query: AdminOrderQueryDto): Promise<import("../common/interfaces/api-response.interface").PaginatedApiResponse<import("./dto/order.dto").AdminOrderResponseDto>>;
+    getOrders(query: AdminOrderQueryDto): Promise<import("../common/interfaces/api-response.interface").PaginatedApiResponse<import("./dto/admin-order-response.dto").AdminOrderResponseDto>>;
     updateOrderStatus(request: Request & {
         user: JwtPayloadDto;
-    }, id: number, dto: UpdateOrderStatusDto): Promise<import("../common/interfaces/api-response.interface").ApiResponse<import("./dto/order.dto").AdminOrderResponseDto>>;
+    }, id: number, dto: UpdateOrderStatusDto): Promise<import("../common/interfaces/api-response.interface").ApiResponse<import("./dto/admin-order-response.dto").AdminOrderResponseDto>>;
 }

@@ -1,5 +1,4 @@
-# TODO: Codebase Cleanup
+# TODO: Refactor Response DTOs
 
-- [x] Task 1: Delete Redundant Files
-- [x] Task 2: Move and Rename Markdown Files
-- [ ] Task 3: Update Internal References
+- [ ] Task 1: Refactor Cart Response DTO
+- [ ] Task 2: Refactor Order Response DTO

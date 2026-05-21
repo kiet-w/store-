@@ -9,38 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthResponseDto = void 0;
-const class_transformer_1 = require("class-transformer");
+exports.ProductImageInputDto = void 0;
 const class_validator_1 = require("class-validator");
-const user_response_dto_1 = require("./user-response.dto");
-class AuthResponseDto {
-    success;
-    message;
-    accessToken;
-    user;
-    constructor(partial) {
-        Object.assign(this, partial);
-    }
+class ProductImageInputDto {
+    url;
+    alt;
 }
-exports.AuthResponseDto = AuthResponseDto;
-__decorate([
-    (0, class_validator_1.IsBoolean)(),
-    __metadata("design:type", Boolean)
-], AuthResponseDto.prototype, "success", void 0);
+exports.ProductImageInputDto = ProductImageInputDto;
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], AuthResponseDto.prototype, "message", void 0);
+], ProductImageInputDto.prototype, "url", void 0);
 __decorate([
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], AuthResponseDto.prototype, "accessToken", void 0);
-__decorate([
-    (0, class_validator_1.ValidateNested)(),
-    (0, class_transformer_1.Type)(() => user_response_dto_1.UserResponseDto),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", user_response_dto_1.UserResponseDto)
-], AuthResponseDto.prototype, "user", void 0);
-//# sourceMappingURL=auth-response.dto.js.map
+], ProductImageInputDto.prototype, "alt", void 0);
+//# sourceMappingURL=product-image-input.dto.js.map

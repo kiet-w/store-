@@ -9,38 +9,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthResponseDto = void 0;
+exports.UserResponseDto = void 0;
+const client_1 = require("@prisma/client");
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
-const user_response_dto_1 = require("./user-response.dto");
-class AuthResponseDto {
-    success;
-    message;
-    accessToken;
-    user;
+class UserResponseDto {
+    id;
+    email;
+    name;
+    role;
+    password;
+    refreshToken;
     constructor(partial) {
         Object.assign(this, partial);
     }
 }
-exports.AuthResponseDto = AuthResponseDto;
+exports.UserResponseDto = UserResponseDto;
 __decorate([
-    (0, class_validator_1.IsBoolean)(),
-    __metadata("design:type", Boolean)
-], AuthResponseDto.prototype, "success", void 0);
+    (0, class_validator_1.IsInt)(),
+    __metadata("design:type", Number)
+], UserResponseDto.prototype, "id", void 0);
+__decorate([
+    (0, class_validator_1.IsEmail)(),
+    __metadata("design:type", String)
+], UserResponseDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", String)
-], AuthResponseDto.prototype, "message", void 0);
+    __metadata("design:type", Object)
+], UserResponseDto.prototype, "name", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsEnum)(client_1.UserRole),
     __metadata("design:type", String)
-], AuthResponseDto.prototype, "accessToken", void 0);
+], UserResponseDto.prototype, "role", void 0);
 __decorate([
-    (0, class_validator_1.ValidateNested)(),
-    (0, class_transformer_1.Type)(() => user_response_dto_1.UserResponseDto),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", user_response_dto_1.UserResponseDto)
-], AuthResponseDto.prototype, "user", void 0);
-//# sourceMappingURL=auth-response.dto.js.map
+    (0, class_transformer_1.Exclude)(),
+    __metadata("design:type", String)
+], UserResponseDto.prototype, "password", void 0);
+__decorate([
+    (0, class_transformer_1.Exclude)(),
+    __metadata("design:type", Object)
+], UserResponseDto.prototype, "refreshToken", void 0);
+//# sourceMappingURL=user-response.dto.js.map

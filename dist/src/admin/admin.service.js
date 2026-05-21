@@ -16,7 +16,7 @@ const client_1 = require("@prisma/client");
 const cache_constants_1 = require("../common/constants/cache.constants");
 const prisma_service_1 = require("../prisma/prisma.service");
 const redis_service_1 = require("../redis/redis.service");
-const order_dto_1 = require("./dto/order.dto");
+const admin_order_response_dto_1 = require("./dto/admin-order-response.dto");
 let AdminService = AdminService_1 = class AdminService {
     prisma;
     redisService;
@@ -151,7 +151,7 @@ let AdminService = AdminService_1 = class AdminService {
             this.prisma.order.count({ where }),
         ]);
         return {
-            data: orders.map((order) => new order_dto_1.AdminOrderResponseDto(order)),
+            data: orders.map((order) => new admin_order_response_dto_1.AdminOrderResponseDto(order)),
             total,
             page,
             limit,
@@ -179,7 +179,7 @@ let AdminService = AdminService_1 = class AdminService {
             },
         });
         this.logger.log(`Admin ${adminUserId} updated order ${order.id} status ${existing.status} -> ${dto.status}`);
-        return new order_dto_1.AdminOrderResponseDto(order);
+        return new admin_order_response_dto_1.AdminOrderResponseDto(order);
     }
     async ensureCategoryExists(id) {
         const category = await this.prisma.category.findUnique({

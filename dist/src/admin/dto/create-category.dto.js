@@ -9,38 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthResponseDto = void 0;
-const class_transformer_1 = require("class-transformer");
+exports.CreateCategoryDto = void 0;
 const class_validator_1 = require("class-validator");
-const user_response_dto_1 = require("./user-response.dto");
-class AuthResponseDto {
-    success;
-    message;
-    accessToken;
-    user;
-    constructor(partial) {
-        Object.assign(this, partial);
-    }
+class CreateCategoryDto {
+    name;
+    slug;
+    description;
 }
-exports.AuthResponseDto = AuthResponseDto;
-__decorate([
-    (0, class_validator_1.IsBoolean)(),
-    __metadata("design:type", Boolean)
-], AuthResponseDto.prototype, "success", void 0);
+exports.CreateCategoryDto = CreateCategoryDto;
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], AuthResponseDto.prototype, "message", void 0);
+], CreateCategoryDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], AuthResponseDto.prototype, "accessToken", void 0);
+], CreateCategoryDto.prototype, "slug", void 0);
 __decorate([
-    (0, class_validator_1.ValidateNested)(),
-    (0, class_transformer_1.Type)(() => user_response_dto_1.UserResponseDto),
     (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", user_response_dto_1.UserResponseDto)
-], AuthResponseDto.prototype, "user", void 0);
-//# sourceMappingURL=auth-response.dto.js.map
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateCategoryDto.prototype, "description", void 0);
+//# sourceMappingURL=create-category.dto.js.map

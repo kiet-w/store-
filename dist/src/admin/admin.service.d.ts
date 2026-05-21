@@ -1,9 +1,13 @@
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
-import { CreateCategoryDto, UpdateCategoryDto } from './dto/category.dto';
-import { AdminOrderQueryDto, AdminOrderResponseDto, UpdateOrderStatusDto } from './dto/order.dto';
-import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
+import { AdminOrderQueryDto } from './dto/admin-order-query.dto';
+import { AdminOrderResponseDto } from './dto/admin-order-response.dto';
+import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 export declare class AdminService {
     private readonly prisma;
     private readonly redisService;

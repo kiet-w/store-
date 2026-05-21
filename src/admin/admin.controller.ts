@@ -19,9 +19,12 @@ import { Roles } from '../common/decorators/roles.decorator';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { paginated, success } from '../common/utils/api-response.util';
 import { AdminService } from './admin.service';
-import { CreateCategoryDto, UpdateCategoryDto } from './dto/category.dto';
-import { AdminOrderQueryDto, UpdateOrderStatusDto } from './dto/order.dto';
-import { CreateProductDto, UpdateProductDto } from './dto/product.dto';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
+import { AdminOrderQueryDto } from './dto/admin-order-query.dto';
+import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 @Controller('admin')
 @UseGuards(AuthGuard, RolesGuard)

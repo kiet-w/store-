@@ -49,6 +49,7 @@ const user_service_1 = require("../user/user.service");
 const bcrypt = __importStar(require("bcryptjs"));
 const jwt = __importStar(require("jsonwebtoken"));
 const auth_response_dto_1 = require("./dto/auth-response.dto");
+const user_response_dto_1 = require("./dto/user-response.dto");
 let AuthService = class AuthService {
     userService;
     configService;
@@ -92,7 +93,7 @@ let AuthService = class AuthService {
         return new auth_response_dto_1.AuthResponseDto({
             success: true,
             accessToken: tokens.accessToken,
-            user: new auth_response_dto_1.UserResponseDto({
+            user: new user_response_dto_1.UserResponseDto({
                 id: user.id,
                 email: user.email,
                 name: user.name,
@@ -115,7 +116,9 @@ let AuthService = class AuthService {
             throw new common_1.UnauthorizedException('Refresh Token không hợp lệ');
         }
         const user = await this.userService.findById(payload.userId);
-        if (!user || !user.refreshToken || !(await bcrypt.compare(refreshToken, user.refreshToken))) {
+        if (!user ||
+            !user.refreshToken ||
+            !(await bcrypt.compare(refreshToken, user.refreshToken))) {
             throw new common_1.UnauthorizedException('Refresh Token không hợp lệ');
         }
         const tokens = this.generateTokens(user.id, user.email, user.role);

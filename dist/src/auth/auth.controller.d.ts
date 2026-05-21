@@ -1,7 +1,8 @@
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
-import { AuthResponseDto, UserResponseDto } from './dto/auth-response.dto';
+import { AuthResponseDto } from './dto/auth-response.dto';
+import { UserResponseDto } from './dto/user-response.dto';
 import type { Response, Request } from 'express';
 import { JwtPayloadDto } from './dto/jwt-payload.dto';
 export declare class AuthController {

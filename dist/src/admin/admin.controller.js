@@ -20,9 +20,12 @@ const roles_decorator_1 = require("../common/decorators/roles.decorator");
 const roles_guard_1 = require("../common/guards/roles.guard");
 const api_response_util_1 = require("../common/utils/api-response.util");
 const admin_service_1 = require("./admin.service");
-const category_dto_1 = require("./dto/category.dto");
-const order_dto_1 = require("./dto/order.dto");
-const product_dto_1 = require("./dto/product.dto");
+const create_category_dto_1 = require("./dto/create-category.dto");
+const update_category_dto_1 = require("./dto/update-category.dto");
+const admin_order_query_dto_1 = require("./dto/admin-order-query.dto");
+const update_order_status_dto_1 = require("./dto/update-order-status.dto");
+const create_product_dto_1 = require("./dto/create-product.dto");
+const update_product_dto_1 = require("./dto/update-product.dto");
 let AdminController = class AdminController {
     adminService;
     constructor(adminService) {
@@ -63,7 +66,7 @@ __decorate([
     __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, category_dto_1.CreateCategoryDto]),
+    __metadata("design:paramtypes", [Object, create_category_dto_1.CreateCategoryDto]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "createCategory", null);
 __decorate([
@@ -72,7 +75,7 @@ __decorate([
     __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Number, category_dto_1.UpdateCategoryDto]),
+    __metadata("design:paramtypes", [Object, Number, update_category_dto_1.UpdateCategoryDto]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "updateCategory", null);
 __decorate([
@@ -80,7 +83,7 @@ __decorate([
     __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, product_dto_1.CreateProductDto]),
+    __metadata("design:paramtypes", [Object, create_product_dto_1.CreateProductDto]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "createProduct", null);
 __decorate([
@@ -89,7 +92,7 @@ __decorate([
     __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Number, product_dto_1.UpdateProductDto]),
+    __metadata("design:paramtypes", [Object, Number, update_product_dto_1.UpdateProductDto]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "updateProduct", null);
 __decorate([
@@ -104,7 +107,7 @@ __decorate([
     (0, common_1.Get)('orders'),
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [order_dto_1.AdminOrderQueryDto]),
+    __metadata("design:paramtypes", [admin_order_query_dto_1.AdminOrderQueryDto]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "getOrders", null);
 __decorate([
@@ -113,7 +116,7 @@ __decorate([
     __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Number, order_dto_1.UpdateOrderStatusDto]),
+    __metadata("design:paramtypes", [Object, Number, update_order_status_dto_1.UpdateOrderStatusDto]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "updateOrderStatus", null);
 exports.AdminController = AdminController = __decorate([
