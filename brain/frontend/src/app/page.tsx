@@ -61,7 +61,7 @@ export default function Home() {
     : notes;
 
   return (
-    <div className="flex min-h-screen bg-zinc-50 dark:bg-black font-sans">
+    <div className="flex h-screen bg-background font-sans overflow-hidden">
       <Sidebar 
         selectedCategory={selectedCategory} 
         onSelectCategory={setSelectedCategory} 
