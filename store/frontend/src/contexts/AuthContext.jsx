@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
@@ -14,7 +15,7 @@ function decodeToken(token) {
         .join('')
     );
     return JSON.parse(jsonPayload);
-  } catch (e) {
+  } catch {
     return null;
   }
 }
@@ -24,20 +25,25 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      const decoded = decodeToken(token);
-      if (decoded && decoded.exp * 1000 > Date.now()) {
-        setUser({
-          id: decoded.sub,
-          role: decoded.role,
-        });
-      } else {
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
+    const checkAuth = () => {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        const decoded = decodeToken(token);
+        if (decoded && decoded.exp * 1000 > Date.now()) {
+          setUser({
+            id: decoded.sub,
+            role: decoded.role,
+          });
+        } else {
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
+        }
       }
-    }
-    setLoading(false);
+      setLoading(false);
+    };
+
+    const timer = setTimeout(checkAuth, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const login = (accessToken, refreshToken) => {
