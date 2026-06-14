@@ -1,0 +1,50 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, var(--accent-blue-glow), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, 0.08), transparent 50%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: var(--space-8);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.login-card h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-1);
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.login-card .subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-6);
+}
+
+.login-card .form-group {
+  margin-bottom: var(--space-4);
+}
+
+.login-card .btn-primary {
+  width: 100%;
+  padding: var(--space-3);
+  font-size: var(--font-size-base);
+  justify-content: center;
+  margin-top: var(--space-2);
+}
