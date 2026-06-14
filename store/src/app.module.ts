@@ -9,6 +9,7 @@ import { ShippersModule } from './shippers/shippers.module';
 import { MapboxModule } from './mapbox/mapbox.module';
 import { DeliveryOrdersModule } from './delivery-orders/delivery-orders.module';
 import { DeliveryBatchesModule } from './delivery-batches/delivery-batches.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { DeliveryBatchesModule } from './delivery-batches/delivery-batches.modul
     MapboxModule,
     DeliveryOrdersModule,
     DeliveryBatchesModule,
+    AdminModule,
   ],
 })
 export class AppModule {}

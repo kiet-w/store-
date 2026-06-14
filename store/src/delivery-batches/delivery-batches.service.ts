@@ -4,7 +4,7 @@ import {
   BadRequestException,
   Logger,
 } from '@nestjs/common';
-import { BatchStatus, DeliveryOrderStatus } from '@prisma/client';
+import { BatchStatus, DeliveryOrderStatus, Prisma } from '@prisma/client';
 import { DeliveryBatchesRepository } from './delivery-batches.repository';
 import { DeliveryOrdersRepository } from '../delivery-orders/delivery-orders.repository';
 import { MapboxService } from '../mapbox/mapbox.service';
@@ -120,7 +120,7 @@ export class DeliveryBatchesService {
 
     const updated = await this.repo.updateOptimizedRoute(
       batchId,
-      result,
+      result as unknown as Prisma.InputJsonValue,
       result.totalDistanceM,
       result.totalDurationS,
       waypointOrder,
