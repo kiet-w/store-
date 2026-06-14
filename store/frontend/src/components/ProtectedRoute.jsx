@@ -1,26 +1,36 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+'use client';
+
+import React, { useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '../contexts/AuthContext';
+import { Spinner } from './atoms';
 
 export const ProtectedRoute = ({ children, roles }) => {
   const { user, loading } = useAuth();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
 
-  if (loading) {
+  useEffect(() => {
+    if (!loading) {
+      if (!user) {
+        // Redirect to login
+        router.push(`/login?from=${encodeURIComponent(pathname)}`);
+      } else if (roles && !roles.includes(user.role)) {
+        // Redirect to home if user doesn't have required role
+        router.push('/');
+      }
+    }
+  }, [user, loading, roles, router, pathname]);
+
+  if (loading || !user || (roles && !roles.includes(user.role))) {
     return (
-      <div className="flex h-full w-full align-center justify-center p-lg">
-        <div className="loader">Đang tải...</div>
+      <div className="flex h-full w-full align-center justify-center p-lg" style={{ minHeight: '100vh' }}>
+        <Spinner />
       </div>
     );
   }
 
-  if (!user) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
-
-  if (roles && !roles.includes(user.role)) {
-    return <Navigate to="/" replace />;
-  }
-
   return children;
 };
+
+export default ProtectedRoute;

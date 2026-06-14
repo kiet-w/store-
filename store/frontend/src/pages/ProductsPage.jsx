@@ -1,1 +1,0 @@
-import React from 'react'; export default function ProductsPage() { return <div className='card p-lg'><h2 className='mb-md'>ProductsPage</h2><p className='text-secondary'>Placeholder content for ProductsPage</p></div>; }

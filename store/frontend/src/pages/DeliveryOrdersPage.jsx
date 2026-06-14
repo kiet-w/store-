@@ -1,1 +1,0 @@
-import React from 'react'; export default function DeliveryOrdersPage() { return <div className='card p-lg'><h2 className='mb-md'>DeliveryOrdersPage</h2><p className='text-secondary'>Placeholder content for DeliveryOrdersPage</p></div>; }
