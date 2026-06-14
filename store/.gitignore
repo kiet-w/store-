@@ -27,3 +27,5 @@ lerna-debug.log*
 
 # Environment variables
 .env
+
+/generated/prisma
