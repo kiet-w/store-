@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Kiểm thử Toàn diện | Technical Manual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --bg: #1e1e1e;
+            --sidebar-bg: #252526;
+            --card-bg: #2d2d30;
+            --text: #d4d4d4;
+            --header-text: #ffffff;
+            --kw: #569cd6;
+            --fn: #dcdcaa;
+            --str: #ce9178;
+            --comment: #6a9955;
+            --accent: #007acc;
+            --type: #4ec9b0;
+            --border: #404040;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: var(--header-text);
+        }
+
+        .nav-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .nav-item.active {
+            background: rgba(0, 122, 204, 0.1);
+            border-left-color: var(--accent);
+            color: var(--header-text);
+        }
+
+        .nav-group {
+            padding: 15px 20px 5px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            scroll-behavior: smooth;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Technical Cards */
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .tech-card h2 {
+            margin-top: 0;
+            color: var(--header-text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tech-card h2 i {
+            color: var(--accent);
+            font-size: 1.4rem;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .field-label {
+            font-weight: bold;
+            color: #888;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .field-value {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Mermaid Styling */
+        .mermaid-container {
+            background: #252526;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mermaid {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Code Block Styling */
+        pre {
+            background: #000;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border: 1px solid #333;
+        }
+
+        .kw { color: var(--kw); }
+        .fn { color: var(--fn); }
+        .str { color: var(--str); }
+        .type { color: var(--type); }
+
+        /* Split Screen for Lifecycle */
+        .lifecycle-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .flow-panel {
+            background: #1a1a1a;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .detail-panel {
+            background: #252526;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        /* Tooltip style */
+        .tooltip-data {
+            font-family: monospace;
+            background: #000;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--type);
+        }
+
+        /* Top System Flow */
+        .system-flow-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .system-flow-section h1 {
+            color: var(--header-text);
+            margin-bottom: 8px;
+        }
+
+        .system-flow-section p {
+            color: #888;
+            font-style: italic;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h1><i class="fas fa-microscope"></i> Testing Docs</h1>
+    </div>
+    <div class="nav-list">
+        <div class="nav-group">Cấu trúc</div>
+        <div class="nav-item active" onclick="scrollToId('section-system')">Sơ đồ Tổng quan</div>
+        <div class="nav-item" onclick="scrollToId('section-infrastructure')">Hạ tầng (e2e-app)</div>
+        <div class="nav-item" onclick="scrollToId('section-helpers')">Tiện ích (e2e-helpers)</div>
+        
+        <div class="nav-group">Kiểm thử chi tiết</div>
+        <div class="nav-item" onclick="scrollToId('section-unit')">Unit Testing (*.spec)</div>
+        <div class="nav-item" onclick="scrollToId('section-e2e-flow')">Luồng Dữ liệu E2E</div>
+        <div class="nav-item" onclick="scrollToId('section-regression')">Chống Hồi quy</div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="content-container">
+        
+        <!-- Section: System Flow -->
+        <div id="section-system" class="system-flow-section">
+            <h1>Hệ thống Kiểm thử Toàn diện</h1>
+            <p>"E2E-First for Enterprise" Strategy Overview</p>
+
+            <svg viewBox="0 0 720 900" style="max-width: 500px; height: auto; display: block; margin: 40px auto;" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#858585" /></marker>
+                </defs>
+                <style>
+                    .c-blue { stroke: #569cd6; fill: #1a3a52; stroke-width: 2; cursor: pointer; }
+                    .c-red { stroke: #f44747; fill: #3a1a1a; stroke-width: 2; cursor: pointer; }
+                    .c-amber { stroke: #dcdcaa; fill: #2d2516; stroke-width: 2; cursor: pointer; }
+                    .c-teal { stroke: #4ec9b0; fill: #1a3a28; stroke-width: 2; cursor: pointer; }
+                    .c-gray { stroke: #858585; fill: #2d2d30; stroke-width: 2; cursor: pointer; }
+                    .th { font: bold 14px sans-serif; fill: #fff; pointer-events: none; }
+                    .ts { font: 12px sans-serif; fill: #aaa; pointer-events: none; }
+                    .region { fill: none; stroke: #404040; stroke-dasharray: 8 4; stroke-width: 1; }
+                    .path-line { fill: none; stroke: #858585; stroke-width: 2; marker-end: url(#arr); }
+                </style>
+
+                <rect x="20" y="80" width="680" height="730" rx="15" class="region" />
+                <text x="30" y="100" class="ts" style="font-weight: bold;">TEST ENVIRONMENT</text>
+
+                <!-- Nodes -->
+                <g onclick="updateTT('E2E Test Runner', 'Chạy các test case giả lập người dùng thực tế.', 'Jest + Supertest', 'HTTP Response 2xx/4xx')">
+                    <rect x="260" y="10" width="200" height="50" rx="8" class="c-blue"/>
+                    <text x="360" y="32" class="th" text-anchor="middle">Jest Runner</text>
+                    <text x="360" y="47" class="ts" text-anchor="middle">E2E Specs</text>
+                </g>
+
+                <path class="path-line" d="M360 60 V120" />
+
+                <g onclick="updateTT('createE2EApp', 'Khởi tạo NestJS application instance trong memory.', 'AppModule + test env', 'INestApplication')">
+                    <rect x="260" y="130" width="200" height="50" rx="8" class="c-amber"/>
+                    <text x="360" y="152" class="th" text-anchor="middle">e2e-app.ts</text>
+                    <text x="360" y="167" class="ts" text-anchor="middle">App Bootstrapping</text>
+                </g>
+
+                <path class="path-line" d="M360 180 V240" />
+
+                <g onclick="updateTT('e2e-helpers', 'Tập hợp các hàm login, reset DB, mock data.', 'PrismaService', 'Clean DB State / Auth Agent')">
+                    <rect x="260" y="250" width="200" height="50" rx="8" class="c-teal"/>
+                    <text x="360" y="272" class="th" text-anchor="middle">e2e-helpers.ts</text>
+                    <text x="360" y="287" class="ts" text-anchor="middle">Utilities & Setup</text>
+                </g>
+
+                <path class="path-line" d="M360 300 V360" />
+
+                <g onclick="updateTT('NestJS Pipeline', 'Xử lý request qua Guard, Pipe, Controller.', 'Access Token', 'Business Result')">
+                    <rect x="210" y="370" width="300" height="120" rx="8" class="c-gray"/>
+                    <text x="360" y="400" class="th" text-anchor="middle">NestJS Framework</text>
+                    <text x="360" y="420" class="ts" text-anchor="middle">Guard -> Pipe -> Controller -> Service</text>
+                </g>
+
+                <path class="path-line" d="M360 490 V550" />
+
+                <g onclick="updateTT('Database Assertion', 'Kiểm tra dữ liệu thực tế dưới DB sau khi gọi API.', 'SQL / Prisma', 'Data Integrity')">
+                    <rect x="260" y="560" width="200" height="50" rx="8" class="c-red"/>
+                    <text x="360" y="582" class="th" text-anchor="middle">Prisma (Postgres)</text>
+                    <text x="360" y="597" class="ts" text-anchor="middle">State Verification</text>
+                </g>
+
+                <!-- Tooltip Box -->
+                <rect id="tooltip-bg" x="40" y="820" width="640" height="70" rx="8" fill="#252526" stroke="#404040" />
+                <foreignObject x="60" y="825" width="600" height="60">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="color:#d4d4d4; font-family:sans-serif; font-size:12px;">
+                        <div id="tt-title" style="color:#fff; font-weight:bold; margin-bottom:4px;">Chọn một node để xem chi tiết...</div>
+                        <div id="tt-why" style="margin-bottom:4px; font-style: italic; color: #ce9178;">Thông tin kỹ thuật sẽ hiện ở đây.</div>
+                        <div style="display:flex; gap:20px;">
+                            <span style="color:#4ec9b0;">INPUT: <span id="tt-in">-</span></span>
+                            <span style="color:#569cd6;">OUTPUT: <span id="tt-out">-</span></span>
+                        </div>
+                    </div>
+                </foreignObject>
+            </svg>
+        </div>
+
+        <!-- Section: Infrastructure -->
+        <div id="section-infrastructure" class="tech-card">
+            <h2><i class="fas fa-server"></i> Hạ tầng E2E: createE2EApp</h2>
+            
+            <div class="field-grid">
+                <div class="field-label">File Path</div>
+                <div class="field-value"><code class="str">test/e2e-app.ts</code></div>
+                
+                <div class="field-label">Core Responsibility</div>
+                <div class="field-value">Khởi tạo và cấu hình instance NestJS cho môi trường test, đảm bảo đồng bộ với production (main.ts).</div>
+                
+                <div class="field-label">Dependencies</div>
+                <div class="field-value"><code>AppModule</code>, <code>PrismaService</code>, <code>cookieParser</code>, <code>AllExceptionsFilter</code></div>
+            </div>
+
+            <div class="lifecycle-container">
+                <div class="flow-panel">
+                    <div class="mermaid">graph TD
+A["process.env.NODE_ENV='test'"] --> B["Test.createTestingModule"]
+B --> C["app.createNestApplication"]
+C --> D["app.use Global Config"]
+D --> E["app.init"]</div>
+                </div>
+                <div class="detail-panel">
+                    <p><strong>Tại sao phải cấu hình thủ công?</strong></p>
+                    <p>NestJS <code>TestingModule</code> không tự động load các global config từ <code>main.ts</code>. Chúng ta phải gắn <code>cookieParser</code>, <code>ValidationPipe</code>, và <code>AllExceptionsFilter</code> để test case không bị "vượt rào".</p>
+                    <pre><span class="kw">const</span> app = moduleFixture.<span class="fn">createNestApplication</span>();
+app.<span class="fn">use</span>(<span class="fn">cookieParser</span>());
+app.<span class="fn">useGlobalPipes</span>(<span class="kw">new</span> <span class="type">ValidationPipe</span>({...}));</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Helpers -->
+        <div id="section-helpers" class="tech-card">
+            <h2><i class="fas fa-tools"></i> "Xương sống" Tiện ích: e2e-helpers</h2>
+            
+            <div class="field-grid">
+                <div class="field-label">File Path</div>
+                <div class="field-value"><code class="str">test/e2e-helpers.ts</code></div>
+                
+                <div class="field-label">Kỹ thuật then chốt</div>
+                <div class="field-value">Sử dụng <code>request.agent(app)</code> để tự động quản lý Cookie (Session persistence) giữa các request.</div>
+            </div>
+
+            <div class="field-label">Hàm quan trọng: resetCustomerState</div>
+            <div class="mermaid-container">
+                <div class="mermaid">graph LR
+Start --> FindUser[Tìm User]
+FindUser --> DelOrderItems[Xóa OrderItems]
+DelOrderItems --> DelOrders[Xóa Orders]
+DelOrders --> DelCartItems[Xóa CartItems]
+DelCartItems --> ResetToken[Reset JWT Token]</div>
+            </div>
+            <p style="font-size: 0.9rem; color: #888;">*Thứ tự xóa cực kỳ quan trọng do ràng buộc Khóa ngoại (Foreign Key) trong Database.</p>
+        </div>
+
+        <!-- Section: Unit Testing -->
+        <div id="section-unit" class="tech-card">
+            <h2><i class="fas fa-vial"></i> Kiểm thử Đơn vị (Unit Testing)</h2>
+            
+            <div class="field-grid">
+                <div class="field-label">Target</div>
+                <div class="field-value">Thành phần nhỏ nhất (Controller/Service) trong sự cô lập.</div>
+                
+                <div class="field-label">Kỹ thuật</div>
+                <div class="field-value"><code>.overrideGuard()</code> và <code>jest.fn()</code></div>
+            </div>
+
+            <div class="lifecycle-container">
+                <div class="flow-panel">
+                    <div class="mermaid">graph TD
+Arrange[Arrange: Mock Service] --> Act[Act: Gọi Controller]
+Act --> Assert[Assert: Expect Result]</div>
+                </div>
+                <div class="detail-panel">
+                    <p><strong>Tại sao Unit Test lại quan trọng?</strong></p>
+                    <p>Mặc dù E2E test bao phủ rộng, Unit test giúp phát hiện nhanh các lỗi logic thuần túy trong vài mili giây mà không cần khởi động Database.</p>
+                    <pre>module.<span class="fn">overrideGuard</span>(<span class="type">AuthGuard</span>)
+  .<span class="fn">useValue</span>({ <span class="fn">canActivate</span>: () => <span class="kw">true</span> });</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: E2E Flow -->
+        <div id="section-e2e-flow" class="tech-card">
+            <h2><i class="fas fa-exchange-alt"></i> Luồng Dữ liệu E2E (E2E Test Flow)</h2>
+            <div class="mermaid-container">
+                <div class="mermaid">sequenceDiagram
+    participant T as Test Script
+    participant A as NestJS App
+    participant G as Guard/Pipe
+    participant S as Service
+    participant D as Database
+
+    T->>A: request.post('/cart/items')
+    A->>G: Extract Cookie & Validate DTO
+    G-->>A: Validated Data
+    A->>S: CartService.addItem()
+    S->>D: Prisma.cartItem.create()
+    D-->>S: Record Saved
+    S-->>A: Result Object
+    A-->>T: 201 Created (JSON)
+    T->>D: Prisma.findMany() verification
+    D-->>T: Data Confirmed</div>
+            </div>
+        </div>
+
+        <!-- Section: Regression -->
+        <div id="section-regression" class="tech-card">
+            <h2><i class="fas fa-shield-alt"></i> Chống Hồi quy (Regression Prevention)</h2>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <thead>
+                    <tr style="background: rgba(255,255,255,0.05);">
+                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--border);">Thay đổi (Change)</th>
+                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--border);">Chốt chặn (Guard)</th>
+                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--border);">Kết quả (Outcome)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border);">Sửa logic tính tổng tiền</td>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border);"><code>auth-cart.e2e-spec</code></td>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border); color: #f44747;">Fail nếu subtotal sai</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border);">Vô tình xóa @UseGuards</td>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border);"><code>roles-enforcement.e2e</code></td>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border); color: #f44747;">Fail nếu trả về 200</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border);">Đổi tên field DTO</td>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border);"><code>ValidationPipe</code></td>
+                        <td style="padding: 12px; border-bottom: 1px solid var(--border); color: #f44747;">Fail do forbidNonWhitelisted</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function scrollToId(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // Update active nav
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        event.currentTarget.classList.add('active');
+    }
+
+    function updateTT(title, why, input, output) {
+        document.getElementById('tt-title').innerText = title;
+        document.getElementById('tt-why').innerText = why;
+        document.getElementById('tt-in').innerText = input;
+        document.getElementById('tt-out').innerText = output;
+    }
+
+    mermaid.initialize({ 
+        theme: 'dark',
+        startOnLoad: true,
+        securityLevel: 'loose'
+    });
+</script>
+
+</body>
+</html>

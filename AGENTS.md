@@ -3,7 +3,7 @@
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **project** (1082 symbols, 2368 relationships, 74 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **project** (22312 symbols, 34149 relationships, 300 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
 > If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
 
@@ -79,4 +79,3 @@ Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-s
 - Transform tasks into verifiable goals (e.g., "Write a test that reproduces the bug, then make it pass").
 - For multi-step tasks, state a brief plan with verification steps.
 - Strong success criteria let you loop independently.
-

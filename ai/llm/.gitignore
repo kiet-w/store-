@@ -1,0 +1,18 @@
+# Ignore python virtual environment
+ollm_env/
+.venv/
+venv/
+
+# Ignore large model weights
+models/
+
+# Ignore python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local run logs and temp files
+*.log
+kv_cache/*.bin
+kv_cache/*.npy

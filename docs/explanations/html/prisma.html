@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisma Infrastructure Documentation</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+        });
+    </script>
+    <style>
+        :root {
+            --bg: #1e1e1e;
+            --card-bg: #252526;
+            --border: #333333;
+            --text: #d4d4d4;
+            --kw: #569cd6;
+            --fn: #dcdcaa;
+            --str: #ce9178;
+            --comment: #6a9955;
+            --accent: #007acc;
+            --teal: #4ec9b0;
+            --purple: #c586c0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 { color: #fff; }
+        .module-header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .technical-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .field-label {
+            color: var(--kw);
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .mermaid {
+            background: #2d2d2d;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            max-width: 500px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        .bg-teal { background: #1a3a3a; color: #4ec9b0; border: 1px solid #4ec9b0; }
+        .bg-purple { background: #2d1e35; color: #c586c0; border: 1px solid #c586c0; }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="module-header">
+            <h1>Hệ thống Prisma ORM</h1>
+            <p>Lớp truy cập dữ liệu trung tâm, cấu hình cho môi trường Enterprise với PostgreSQL và Driver Adapters.</p>
+        </div>
+
+        <section class="technical-card">
+            <h3>THÔNG TIN MODULE</h3>
+            <span class="field-label">File Paths:</span>
+            <ul>
+                <li><code>prisma/schema.prisma</code></li>
+                <li><code>src/prisma/prisma.module.ts</code></li>
+                <li><code>src/prisma/prisma.service.ts</code></li>
+            </ul>
+            <span class="field-label">Core Responsibility:</span>
+            Quản lý connection pool, thực thi query, và đảm bảo Type Safety cho database.
+        </section>
+
+        <section class="technical-card">
+            <h3>Sơ đồ Hệ Thống (Data Access Flow)</h3>
+            <svg viewBox="0 0 720 900" style="max-width: 500px; height: auto; display: block; margin: 0 auto;" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#858585" /></marker>
+                </defs>
+                <style>
+                    .c-teal { stroke: #4ec9b0; fill: #1a3a28; stroke-width: 2; cursor: pointer; }
+                    .c-purple { stroke: #c586c0; fill: #2d1e35; stroke-width: 2; cursor: pointer; }
+                    .c-gray { stroke: #858585; fill: #2d2d30; stroke-width: 2; cursor: pointer; }
+                    .th { font: bold 14px sans-serif; fill: #fff; pointer-events: none; }
+                    .ts { font: 12px sans-serif; fill: #aaa; pointer-events: none; }
+                    .region { fill: none; stroke: #404040; stroke-dasharray: 8 4; stroke-width: 1; }
+                    .path-line { fill: none; stroke: #858585; stroke-width: 2; marker-end: url(#arr); }
+                    rect:hover { filter: brightness(1.2); }
+                </style>
+                <rect x="20" y="80" width="680" height="730" rx="15" class="region" />
+                <text x="30" y="100" class="ts" style="font-weight: bold;">DATA LAYER</text>
+
+                <g onclick="showTooltip(event, 'Prisma Client', 'Generated types based on schema.prisma', 'Schema Definition', 'TS Interfaces')">
+                    <rect x="260" y="120" width="200" height="50" rx="8" class="c-teal"/>
+                    <text x="360" y="142" class="th" text-anchor="middle">Prisma Client</text>
+                    <text x="360" y="157" class="ts" text-anchor="middle">npx prisma generate</text>
+                </g>
+
+                <path class="path-line" d="M360 170 L360 220" />
+
+                <g onclick="showTooltip(event, 'PrismaService', 'Custom service with pg.Pool adapter', 'DATABASE_URL', 'Prisma Client Instance')">
+                    <rect x="260" y="230" width="200" height="50" rx="8" class="c-purple"/>
+                    <text x="360" y="252" class="th" text-anchor="middle">Prisma Service</text>
+                    <text x="360" y="267" class="ts" text-anchor="middle">onModuleInit ($connect)</text>
+                </g>
+
+                <path class="path-line" d="M360 280 L360 330" />
+
+                <g onclick="showTooltip(event, 'pg.Pool / PrismaPg', 'External driver adapter for connection pooling', 'Adapter Config', 'DB Connections')">
+                    <rect x="260" y="340" width="200" height="50" rx="8" class="c-gray"/>
+                    <text x="360" y="362" class="th" text-anchor="middle">Connection Adapter</text>
+                    <text x="360" y="377" class="ts" text-anchor="middle">node-postgres pool</text>
+                </g>
+
+                <rect id="tooltip-bg" x="40" y="820" width="640" height="70" rx="8" fill="#252526" stroke="#404040" />
+                <foreignObject x="60" y="825" width="600" height="60">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="color:#d4d4d4; font-family:sans-serif; font-size:12px;">
+                        <div id="tt-title" style="color:#fff; font-weight:bold; margin-bottom:4px;">Select a node...</div>
+                        <div id="tt-why" style="margin-bottom:4px; font-style: italic; color: #ce9178;">Explanation will appear here</div>
+                        <div style="display:flex; gap:20px;">
+                            <span style="color:#4ec9b0;">IN: <span id="tt-in">-</span></span>
+                            <span style="color:#569cd6;">OUT: <span id="tt-out">-</span></span>
+                        </div>
+                    </div>
+                </foreignObject>
+            </svg>
+        </section>
+
+        <h2>Chi tiết Service</h2>
+        <div class="technical-card">
+            <span class="field-label">Class Name:</span> <code>PrismaService</code>
+            <span class="field-label">Constructor Logic:</span> 
+            Khởi tạo <code>pg.Pool</code> và sử dụng <code>PrismaPg</code> adapter để tối ưu hóa việc quản lý kết nối.
+            <span class="field-label">Visual Logic:</span>
+            <pre class="mermaid">graph TD
+Start[Constructor] --> Env[Get DATABASE_URL]
+Env --> Pool["Create pg.Pool"]
+Pool --> Adapter["Create PrismaPg Adapter"]
+Adapter --> Super["super({adapter})"]</pre>
+        </div>
+
+        <div class="technical-card">
+            <span class="field-label">Method Name:</span> <code>onModuleInit()</code>
+            <span class="field-label">Purpose:</span> Đảm bảo kết nối database được thiết lập ngay khi ứng dụng khởi động.
+            <pre class="mermaid">graph LR
+Init["NestJS Init"] --> Conn["$connect"]
+Conn --> Success["App Ready"]
+Conn --> Fail["App Crash on Start"]</pre>
+        </div>
+
+        <h2>Chi tiết Schema (Cấu trúc dữ liệu)</h2>
+        <div class="technical-card">
+            <span class="field-label">Preview Features:</span> <code>["driverAdapters"]</code>
+            <span class="field-label">Indexing Strategy:</span> 
+            <code>@@index([userId, status])</code> trên Cart và Order để tối ưu hóa các truy vấn lọc theo trạng thái của người dùng.
+            <pre class="mermaid">graph TD
+Schema["schema.prisma"] --> Models["User, Product, Cart, Order, etc."]
+Models --> Enums["UserRole, ProductStatus, etc."]
+Models --> Relations["One-to-Many, Many-to-One"]</pre>
+        </div>
+    </div>
+
+    <script>
+        function showTooltip(event, title, why, input, output) {
+            document.getElementById('tt-title').innerText = title;
+            document.getElementById('tt-why').innerText = why;
+            document.getElementById('tt-in').innerText = input;
+            document.getElementById('tt-out').innerText = output;
+        }
+    </script>
+</body>
+</html>

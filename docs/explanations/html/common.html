@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Module Analysis - NestJS Learning Dashboard</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.1.0/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+    <style>
+        :root {
+            --bg: #1e1e1e;
+            --container-bg: #252526;
+            --card-bg: #2d2d30;
+            --text: #d4d4d4;
+            --kw: #569cd6;
+            --fn: #dcdcaa;
+            --str: #ce9178;
+            --comment: #6a9955;
+            --accent: #007acc;
+            --border: #404040;
+            --teal: #4ec9b0;
+            --purple: #c586c0;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #fff;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .module-info {
+            background: var(--container-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        .lifecycle-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 900px) {
+            .lifecycle-container { grid-template-columns: 1fr; }
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            height: fit-content;
+        }
+        .mermaid {
+            background: #fff;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px auto;
+            max-width: 500px;
+            display: block;
+        }
+        code {
+            background: #000;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            color: var(--fn);
+        }
+        pre {
+            background: #000;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-right: 5px;
+        }
+        .tag-controller { background: var(--kw); color: #fff; }
+        .tag-service { background: var(--teal); color: #fff; }
+        .tag-guard { background: #f44747; color: #fff; }
+        .tag-filter { background: var(--purple); color: #fff; }
+        .tag-util { background: var(--str); color: #fff; }
+        
+        /* System Flow Tooltip Styles */
+        #tooltip-bg { transition: all 0.3s; }
+    </style>
+    <script>
+        function showTooltip(evt, title, why, input, output) {
+            document.getElementById('tt-title').innerText = title;
+            document.getElementById('tt-why').innerText = why;
+            document.getElementById('tt-in').innerText = input;
+            document.getElementById('tt-out').innerText = output;
+            
+            const nodes = document.querySelectorAll('rect.c-blue, rect.c-teal, rect.c-purple, rect.c-gray, rect.c-amber');
+            nodes.forEach(n => n.style.filter = 'none');
+            const target = evt.currentTarget.querySelector('rect');
+            if (target) target.style.filter = 'brightness(1.5) saturate(1.2)';
+        }
+    </script>
+</head>
+<body>
+    <div class="content">
+        <h1>Common Module Technical Manual</h1>
+        
+        <div class="module-info">
+            <h3>THÔNG TIN MODULE</h3>
+            <p><strong>Module Name:</strong> CommonModule</p>
+            <p><strong>Base Scope:</strong> Toàn hệ thống (Shared Infrastructure)</p>
+            <p><strong>Core Responsibility:</strong> Quản lý lỗi tập trung, chuẩn hóa phản hồi API, kiểm soát phân quyền (RBAC), và các tiện ích dùng chung.</p>
+        </div>
+
+        <h2>Sơ đồ Hệ Thống (System Data Flow)</h2>
+        <svg viewBox="0 0 720 700" style="max-width: 600px; height: auto; display: block; margin: 0 auto;" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#858585" /></marker>
+          </defs>
+          <style>
+            .c-blue { stroke: #569cd6; fill: #1a3a52; stroke-width: 2; cursor: pointer; }
+            .c-purple { stroke: #c586c0; fill: #2d1e35; stroke-width: 2; cursor: pointer; }
+            .c-teal { stroke: #4ec9b0; fill: #1a3a28; stroke-width: 2; cursor: pointer; }
+            .c-amber { stroke: #dcdcaa; fill: #2d2516; stroke-width: 2; cursor: pointer; }
+            .c-gray { stroke: #858585; fill: #2d2d30; stroke-width: 2; cursor: pointer; }
+            .th { font: bold 14px sans-serif; fill: #fff; pointer-events: none; }
+            .ts { font: 12px sans-serif; fill: #aaa; pointer-events: none; }
+            .path-line { fill: none; stroke: #858585; stroke-width: 2; marker-end: url(#arr); }
+          </style>
+
+          <rect x="20" y="20" width="680" height="580" rx="15" fill="none" stroke="#404040" stroke-dasharray="8 4" />
+          
+          <!-- Filter -->
+          <g onclick="showTooltip(event, 'AllExceptionsFilter', 'Chốt chặn lỗi cuối cùng', 'Exception, ArgumentsHost', 'Standard JSON Error')">
+            <rect x="50" y="100" width="180" height="60" rx="8" class="c-purple"/>
+            <text x="140" y="130" class="th" text-anchor="middle">Exception Filter</text>
+            <text x="140" y="150" class="ts" text-anchor="middle">AllExceptionsFilter</text>
+          </g>
+
+          <!-- Guard -->
+          <g onclick="showTooltip(event, 'RolesGuard', 'Kiểm tra quyền RBAC', 'ExecutionContext, Roles Metadata', 'Boolean / ForbiddenException')">
+            <rect x="270" y="100" width="180" height="60" rx="8" class="c-blue"/>
+            <text x="360" y="130" class="th" text-anchor="middle">Roles Guard</text>
+            <text x="360" y="150" class="ts" text-anchor="middle">RolesGuard</text>
+          </g>
+
+          <!-- Interceptor -->
+          <g onclick="showTooltip(event, 'TransformInterceptor', 'Chuẩn hóa output API', 'Plain Data / Success Object', 'Standard ApiResponse<T>')">
+            <rect x="490" y="100" width="180" height="60" rx="8" class="c-teal"/>
+            <text x="580" y="130" class="th" text-anchor="middle">Interceptor</text>
+            <text x="580" y="150" class="ts" text-anchor="middle">TransformInterceptor</text>
+          </g>
+
+          <!-- Utils -->
+          <g onclick="showTooltip(event, 'API Utils', 'Helper tạo response nhanh', 'Data, Meta Params', 'ApiResponse Object')">
+            <rect x="270" y="250" width="180" height="60" rx="8" class="c-amber"/>
+            <text x="360" y="280" class="th" text-anchor="middle">Utilities</text>
+            <text x="360" y="300" class="ts" text-anchor="middle">success / paginated</text>
+          </g>
+
+          <path d="M 360 160 L 360 250" class="path-line" />
+          <path d="M 490 130 L 450 130" class="path-line" />
+          <path d="M 230 130 L 270 130" class="path-line" />
+
+          <!-- Tooltip Box -->
+          <rect id="tooltip-bg" x="40" y="610" width="640" height="70" rx="8" fill="#252526" stroke="#404040" />
+          <foreignObject x="60" y="615" width="600" height="60">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="color:#d4d4d4; font-family:sans-serif; font-size:12px;">
+              <div id="tt-title" style="color:#fff; font-weight:bold; margin-bottom:4px;">Chọn một thành phần...</div>
+              <div id="tt-why" style="margin-bottom:4px; font-style: italic; color: #ce9178;">Thông tin chi tiết sẽ hiển thị ở đây</div>
+              <div style="display:flex; gap:20px;">
+                <span style="color:#4ec9b0;">IN: <span id="tt-in">-</span></span>
+                <span style="color:#569cd6;">OUT: <span id="tt-out">-</span></span>
+              </div>
+            </div>
+          </foreignObject>
+        </svg>
+
+        <div style="margin-top: 40px;"></div>
+
+        <!-- 1. Filters -->
+        <section>
+            <h2>1. Exception Filters</h2>
+            <div class="lifecycle-container">
+                <div class="card">
+                    <span class="tag tag-filter">Filter</span>
+                    <h3>AllExceptionsFilter</h3>
+                    <p><strong>File:</strong> <code>src/common/filters/all-exceptions.filter.ts</code></p>
+                    <p>Bộ lọc ngoại lệ toàn cục giúp chuẩn hóa mọi lỗi thành định dạng JSON nhất quán.</p>
+                    <div class="mermaid">graph TD
+A[Exception Thrown] --> B{Is HttpException?}
+B -- Yes --> C[Get Status & Msg]
+B -- No --> D[Status 500 & Generic Msg]
+C --> E[Log Error Detail]
+D --> E
+E --> F[Send JSON Response]</div>
+                </div>
+                <div class="card">
+                    <h4>Technical Breakdown</h4>
+                    <p><strong>Decorators:</strong> <code>@Catch()</code></p>
+                    <p><strong>Input:</strong> <code>exception: unknown</code>, <code>host: ArgumentsHost</code></p>
+                    <p><strong>Logic:</strong> 
+                        <ul>
+                            <li>Sử dụng <code>switchToHttp()</code> để truy cập Express objects.</li>
+                            <li>Ghi log chi tiết qua <code>Logger('CrisisManagementTeam')</code>.</li>
+                            <li>Ẩn thông tin lỗi 500 nhạy cảm khỏi client.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Interceptors -->
+        <section>
+            <h2>2. Interceptors</h2>
+            <div class="lifecycle-container">
+                <div class="card">
+                    <span class="tag tag-filter">Interceptor</span>
+                    <h3>TransformInterceptor</h3>
+                    <p><strong>File:</strong> <code>src/common/interceptors/transform.interceptor.ts</code></p>
+                    <p>Tự động bọc dữ liệu thành công vào cấu trúc <code>{ statusCode, message, data }</code>.</p>
+                    <div class="mermaid">graph LR
+A[Controller Result] --> B{Already Formatted?}
+B -- Yes --> C[Return Data]
+B -- No --> D[Wrap in ApiResponse]
+D --> C</div>
+                </div>
+                <div class="card">
+                    <h4>Technical Breakdown</h4>
+                    <p><strong>Method:</strong> <code>intercept()</code></p>
+                    <p><strong>Input:</strong> <code>ExecutionContext</code>, <code>CallHandler</code></p>
+                    <p><strong>Logic:</strong>
+                        <ul>
+                            <li>Sử dụng RxJS <code>map()</code> để can thiệp luồng dữ liệu.</li>
+                            <li>Kiểm tra sự tồn tại của <code>statusCode</code> và <code>message</code> để tránh bọc lặp.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Guards -->
+        <section>
+            <h2>3. Guards (RBAC)</h2>
+            <div class="lifecycle-container">
+                <div class="card">
+                    <span class="tag tag-guard">Guard</span>
+                    <h3>RolesGuard</h3>
+                    <p><strong>File:</strong> <code>src/common/guards/roles.guard.ts</code></p>
+                    <p>Kiểm soát quyền truy cập dựa trên Role được cấu hình qua metadata.</p>
+                    <div class="mermaid">graph TD
+A[Request] --> B[Read Metadata]
+B --> C{Roles required?}
+C -- No --> D[Allow]
+C -- Yes --> E[Check User Role]
+E --> F{Match?}
+F -- Yes --> D
+F -- No --> G[Throw Forbidden]</div>
+                </div>
+                <div class="card">
+                    <h4>Technical Breakdown</h4>
+                    <p><strong>Method:</strong> <code>canActivate()</code></p>
+                    <p><strong>Dependencies:</strong> <code>Reflector</code></p>
+                    <p><strong>Logic:</strong>
+                        <ul>
+                            <li>Dùng <code>getAllAndOverride</code> để ưu tiên metadata tại method.</li>
+                            <li>Yêu cầu thông tin user từ request (thường gán bởi AuthGuard).</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Utils -->
+        <section>
+            <h2>4. Utilities</h2>
+            <div class="lifecycle-container">
+                <div class="card">
+                    <span class="tag tag-util">Util</span>
+                    <h3>ApiResponse Helpers</h3>
+                    <p><strong>File:</strong> <code>src/common/utils/api-response.util.ts</code></p>
+                    <p>Hàm helper <code>success</code> và <code>paginated</code>.</p>
+                    <div class="mermaid">graph LR
+A[Raw Data] --> B(paginated func)
+B --> C[Calculate totalPages]
+C --> D[Return Object]</div>
+                </div>
+                <div class="card">
+                    <h4>Function: paginated()</h4>
+                    <p><strong>Formula:</strong> <code>Math.ceil(total / limit)</code></p>
+                    <p><strong>Benefit:</strong> Đảm bảo logic tính trang luôn đồng nhất ở mọi module, tránh lỗi hiển thị UI.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

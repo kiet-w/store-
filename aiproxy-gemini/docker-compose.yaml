@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  aiproxy:
+    image: ghcr.io/labring/aiproxy:latest
+    container_name: aiproxy
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./aiproxy_data:/aiproxy
+    environment:
+      - LISTEN=:3000
+      - ADMIN_KEY=Kiet_Admin_Secret_2026 # Thay đổi key này để bảo mật hệ thống của bạn
+      - BILLING_ENABLED=false # Tắt tính năng tính tiền nếu chỉ dùng cá nhân
+    restart: always

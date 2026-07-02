@@ -1,0 +1,5 @@
+# Core dependencies for running Ollama and agents
+ollama>=0.6.2
+pydantic>=2.13.4
+httpx>=0.28.1
+tokenizers>=0.19.0

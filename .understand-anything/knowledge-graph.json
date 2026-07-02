@@ -1,0 +1,3018 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "project",
+    "languages": [
+      "typescript"
+    ],
+    "frameworks": [
+      "NestJS"
+    ],
+    "description": "NestJS enterprise-grade starter repository serving as the foundation for building a NestJS Learning Dashboard.",
+    "analyzedAt": "2026-05-26T13:00:41Z",
+    "gitCommitHash": "1399c4da145268110f087633230c907c256914ae"
+  },
+  "nodes": [
+    {
+      "id": "file:src/admin/categories/admin-categories-cache.service.ts",
+      "type": "file",
+      "name": "admin-categories-cache.service.ts",
+      "filePath": "src/admin/categories/admin-categories-cache.service.ts",
+      "summary": "Service for managing cache invalidation of administrative categories.",
+      "tags": [
+        "service",
+        "cache",
+        "redis",
+        "admin"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/categories/admin-categories-cache.service.ts:AdminCategoriesCacheService",
+      "type": "class",
+      "name": "AdminCategoriesCacheService",
+      "filePath": "src/admin/categories/admin-categories-cache.service.ts",
+      "summary": "Provides methods to invalidate category-related cache in Redis.",
+      "tags": [
+        "service",
+        "cache",
+        "provider"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/admin/categories/admin-categories-cache.service.ts:AdminCategoriesCacheService:invalidateCategoryCache",
+      "type": "function",
+      "name": "invalidateCategoryCache",
+      "filePath": "src/admin/categories/admin-categories-cache.service.ts",
+      "summary": "Invalidates category-related cache keys and resets Redis cache.",
+      "tags": [
+        "method",
+        "cache-invalidation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/categories/admin-categories.controller.ts",
+      "type": "file",
+      "name": "admin-categories.controller.ts",
+      "filePath": "src/admin/categories/admin-categories.controller.ts",
+      "summary": "Administrative controller for category management (create, update).",
+      "tags": [
+        "controller",
+        "admin",
+        "rest-api"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/categories/admin-categories.controller.ts:AdminCategoriesController",
+      "type": "class",
+      "name": "AdminCategoriesController",
+      "filePath": "src/admin/categories/admin-categories.controller.ts",
+      "summary": "Handles administrative category management requests.",
+      "tags": [
+        "controller",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/admin/categories/admin-categories.controller.ts:AdminCategoriesController:createCategory",
+      "type": "function",
+      "name": "createCategory",
+      "filePath": "src/admin/categories/admin-categories.controller.ts",
+      "summary": "Endpoint for creating a new category.",
+      "tags": [
+        "endpoint",
+        "post"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/admin/categories/admin-categories.controller.ts:AdminCategoriesController:updateCategory",
+      "type": "function",
+      "name": "updateCategory",
+      "filePath": "src/admin/categories/admin-categories.controller.ts",
+      "summary": "Endpoint for updating an existing category.",
+      "tags": [
+        "endpoint",
+        "patch"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/categories/admin-categories.module.ts",
+      "type": "file",
+      "name": "admin-categories.module.ts",
+      "filePath": "src/admin/categories/admin-categories.module.ts",
+      "summary": "NestJS module for administrative category features.",
+      "tags": [
+        "module",
+        "admin"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/categories/admin-categories.module.ts:AdminCategoriesModule",
+      "type": "class",
+      "name": "AdminCategoriesModule",
+      "filePath": "src/admin/categories/admin-categories.module.ts",
+      "summary": "Configures dependencies for administrative category management.",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/categories/admin-categories.repository.ts",
+      "type": "file",
+      "name": "admin-categories.repository.ts",
+      "filePath": "src/admin/categories/admin-categories.repository.ts",
+      "summary": "Data access layer for categories using Prisma.",
+      "tags": [
+        "repository",
+        "prisma",
+        "data-access"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/categories/admin-categories.repository.ts:AdminCategoriesRepository",
+      "type": "class",
+      "name": "AdminCategoriesRepository",
+      "filePath": "src/admin/categories/admin-categories.repository.ts",
+      "summary": "Provides Prisma-based data access for categories.",
+      "tags": [
+        "repository"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/categories/admin-categories.service.ts",
+      "type": "file",
+      "name": "admin-categories.service.ts",
+      "filePath": "src/admin/categories/admin-categories.service.ts",
+      "summary": "Business logic service for administrative category operations.",
+      "tags": [
+        "service",
+        "admin",
+        "business-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/categories/admin-categories.service.ts:AdminCategoriesService",
+      "type": "class",
+      "name": "AdminCategoriesService",
+      "filePath": "src/admin/categories/admin-categories.service.ts",
+      "summary": "Handles business rules for category creation and updates.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/categories/dto/create-category.dto.ts",
+      "type": "file",
+      "name": "create-category.dto.ts",
+      "filePath": "src/admin/categories/dto/create-category.dto.ts",
+      "summary": "Data transfer object for creating a category.",
+      "tags": [
+        "dto",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/categories/dto/create-category.dto.ts:CreateCategoryDto",
+      "type": "class",
+      "name": "CreateCategoryDto",
+      "filePath": "src/admin/categories/dto/create-category.dto.ts",
+      "summary": "Defines input structure and validation for category creation.",
+      "tags": [
+        "dto"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/categories/dto/update-category.dto.ts",
+      "type": "file",
+      "name": "update-category.dto.ts",
+      "filePath": "src/admin/categories/dto/update-category.dto.ts",
+      "summary": "Data transfer object for updating a category.",
+      "tags": [
+        "dto",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/categories/dto/update-category.dto.ts:UpdateCategoryDto",
+      "type": "class",
+      "name": "UpdateCategoryDto",
+      "filePath": "src/admin/categories/dto/update-category.dto.ts",
+      "summary": "Defines input structure and validation for category updates.",
+      "tags": [
+        "dto"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/orders/admin-orders.controller.ts",
+      "type": "file",
+      "name": "admin-orders.controller.ts",
+      "filePath": "src/admin/orders/admin-orders.controller.ts",
+      "summary": "Administrative controller for order management.",
+      "tags": [
+        "controller",
+        "admin",
+        "orders"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/orders/admin-orders.controller.ts:AdminOrdersController",
+      "type": "class",
+      "name": "AdminOrdersController",
+      "filePath": "src/admin/orders/admin-orders.controller.ts",
+      "summary": "Handles administrative order management requests.",
+      "tags": [
+        "controller",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/orders/admin-orders.module.ts",
+      "type": "file",
+      "name": "admin-orders.module.ts",
+      "filePath": "src/admin/orders/admin-orders.module.ts",
+      "summary": "NestJS module for administrative order features.",
+      "tags": [
+        "module",
+        "admin"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/orders/admin-orders.module.ts:AdminOrdersModule",
+      "type": "class",
+      "name": "AdminOrdersModule",
+      "filePath": "src/admin/orders/admin-orders.module.ts",
+      "summary": "Configures dependencies for administrative order management.",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/orders/admin-orders.repository.ts",
+      "type": "file",
+      "name": "admin-orders.repository.ts",
+      "filePath": "src/admin/orders/admin-orders.repository.ts",
+      "summary": "Data access layer for orders using Prisma.",
+      "tags": [
+        "repository",
+        "prisma",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/orders/admin-orders.repository.ts:AdminOrdersRepository",
+      "type": "class",
+      "name": "AdminOrdersRepository",
+      "filePath": "src/admin/orders/admin-orders.repository.ts",
+      "summary": "Provides Prisma-based data access for orders.",
+      "tags": [
+        "repository"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/orders/admin-orders.service.ts",
+      "type": "file",
+      "name": "admin-orders.service.ts",
+      "filePath": "src/admin/orders/admin-orders.service.ts",
+      "summary": "Business logic service for administrative order operations.",
+      "tags": [
+        "service",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/orders/admin-orders.service.ts:AdminOrdersService",
+      "type": "class",
+      "name": "AdminOrdersService",
+      "filePath": "src/admin/orders/admin-orders.service.ts",
+      "summary": "Handles business rules for order retrieval and status updates.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/orders/dto/admin-order-query.dto.ts",
+      "type": "file",
+      "name": "admin-order-query.dto.ts",
+      "filePath": "src/admin/orders/dto/admin-order-query.dto.ts",
+      "summary": "DTO for administrative order queries and pagination.",
+      "tags": [
+        "dto",
+        "pagination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/orders/dto/admin-order-query.dto.ts:AdminOrderQueryDto",
+      "type": "class",
+      "name": "AdminOrderQueryDto",
+      "filePath": "src/admin/orders/dto/admin-order-query.dto.ts",
+      "summary": "Extends pagination to include order status filtering.",
+      "tags": [
+        "dto"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/orders/dto/admin-order-response.dto.ts",
+      "type": "file",
+      "name": "admin-order-response.dto.ts",
+      "filePath": "src/admin/orders/dto/admin-order-response.dto.ts",
+      "summary": "DTO for representing orders in administrative responses.",
+      "tags": [
+        "dto",
+        "response"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/orders/dto/admin-order-response.dto.ts:AdminOrderResponseDto",
+      "type": "class",
+      "name": "AdminOrderResponseDto",
+      "filePath": "src/admin/orders/dto/admin-order-response.dto.ts",
+      "summary": "Formats order data for administrative view.",
+      "tags": [
+        "dto"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/orders/dto/update-order-status.dto.ts",
+      "type": "file",
+      "name": "update-order-status.dto.ts",
+      "filePath": "src/admin/orders/dto/update-order-status.dto.ts",
+      "summary": "DTO for updating order status.",
+      "tags": [
+        "dto",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/orders/dto/update-order-status.dto.ts:UpdateOrderStatusDto",
+      "type": "class",
+      "name": "UpdateOrderStatusDto",
+      "filePath": "src/admin/orders/dto/update-order-status.dto.ts",
+      "summary": "Validates status updates for orders.",
+      "tags": [
+        "dto"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/products/admin-products-cache.service.ts",
+      "type": "file",
+      "name": "admin-products-cache.service.ts",
+      "filePath": "src/admin/products/admin-products-cache.service.ts",
+      "summary": "Service for managing cache invalidation of administrative products.",
+      "tags": [
+        "service",
+        "cache",
+        "redis"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/products/admin-products-cache.service.ts:AdminProductsCacheService",
+      "type": "class",
+      "name": "AdminProductsCacheService",
+      "filePath": "src/admin/products/admin-products-cache.service.ts",
+      "summary": "Provides methods to invalidate product-related cache.",
+      "tags": [
+        "service",
+        "cache"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/products/admin-products.controller.ts",
+      "type": "file",
+      "name": "admin-products.controller.ts",
+      "filePath": "src/admin/products/admin-products.controller.ts",
+      "summary": "Administrative controller for product management.",
+      "tags": [
+        "controller",
+        "admin",
+        "products"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/products/admin-products.controller.ts:AdminProductsController",
+      "type": "class",
+      "name": "AdminProductsController",
+      "filePath": "src/admin/products/admin-products.controller.ts",
+      "summary": "Handles product creation, updates, and soft deletion.",
+      "tags": [
+        "controller",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/products/admin-products.helper.ts",
+      "type": "file",
+      "name": "admin-products.helper.ts",
+      "filePath": "src/admin/products/admin-products.helper.ts",
+      "summary": "Helper service for formatting product data for Prisma.",
+      "tags": [
+        "helper",
+        "utility",
+        "prisma"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/products/admin-products.helper.ts:AdminProductsHelper",
+      "type": "class",
+      "name": "AdminProductsHelper",
+      "filePath": "src/admin/products/admin-products.helper.ts",
+      "summary": "Formats create/update DTOs into Prisma input types.",
+      "tags": [
+        "helper"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/products/admin-products.module.ts",
+      "type": "file",
+      "name": "admin-products.module.ts",
+      "filePath": "src/admin/products/admin-products.module.ts",
+      "summary": "NestJS module for administrative product features.",
+      "tags": [
+        "module",
+        "admin"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/products/admin-products.module.ts:AdminProductsModule",
+      "type": "class",
+      "name": "AdminProductsModule",
+      "filePath": "src/admin/products/admin-products.module.ts",
+      "summary": "Configures dependencies for administrative product management.",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/products/admin-products.repository.ts",
+      "type": "file",
+      "name": "admin-products.repository.ts",
+      "filePath": "src/admin/products/admin-products.repository.ts",
+      "summary": "Data access layer for products using Prisma.",
+      "tags": [
+        "repository",
+        "prisma",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/products/admin-products.repository.ts:AdminProductsRepository",
+      "type": "class",
+      "name": "AdminProductsRepository",
+      "filePath": "src/admin/products/admin-products.repository.ts",
+      "summary": "Provides Prisma-based data access for products.",
+      "tags": [
+        "repository"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/products/admin-products.service.ts",
+      "type": "file",
+      "name": "admin-products.service.ts",
+      "filePath": "src/admin/products/admin-products.service.ts",
+      "summary": "Business logic service for administrative product operations.",
+      "tags": [
+        "service",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/products/admin-products.service.ts:AdminProductsService",
+      "type": "class",
+      "name": "AdminProductsService",
+      "filePath": "src/admin/products/admin-products.service.ts",
+      "summary": "Handles product lifecycle management including category checks and slug uniqueness.",
+      "tags": [
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/products/dto/create-product.dto.ts",
+      "type": "file",
+      "name": "create-product.dto.ts",
+      "filePath": "src/admin/products/dto/create-product.dto.ts",
+      "summary": "DTO for creating a product.",
+      "tags": [
+        "dto",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/products/dto/create-product.dto.ts:CreateProductDto",
+      "type": "class",
+      "name": "CreateProductDto",
+      "filePath": "src/admin/products/dto/create-product.dto.ts",
+      "summary": "Defines input structure for creating products.",
+      "tags": [
+        "dto"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/products/dto/product-image-input.dto.ts",
+      "type": "file",
+      "name": "product-image-input.dto.ts",
+      "filePath": "src/admin/products/dto/product-image-input.dto.ts",
+      "summary": "DTO for product image input.",
+      "tags": [
+        "dto",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/products/dto/product-image-input.dto.ts:ProductImageInputDto",
+      "type": "class",
+      "name": "ProductImageInputDto",
+      "filePath": "src/admin/products/dto/product-image-input.dto.ts",
+      "summary": "Defines image URL and alt text input.",
+      "tags": [
+        "dto"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/products/dto/update-product.dto.ts",
+      "type": "file",
+      "name": "update-product.dto.ts",
+      "filePath": "src/admin/products/dto/update-product.dto.ts",
+      "summary": "DTO for updating a product.",
+      "tags": [
+        "dto",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/products/dto/update-product.dto.ts:UpdateProductDto",
+      "type": "class",
+      "name": "UpdateProductDto",
+      "filePath": "src/admin/products/dto/update-product.dto.ts",
+      "summary": "Defines partial input for product updates.",
+      "tags": [
+        "dto"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/users/admin-users.controller.ts",
+      "type": "file",
+      "name": "admin-users.controller.ts",
+      "filePath": "src/admin/users/admin-users.controller.ts",
+      "summary": "Administrative controller for user management.",
+      "tags": [
+        "controller",
+        "admin",
+        "users"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/users/admin-users.controller.ts:AdminUsersController",
+      "type": "class",
+      "name": "AdminUsersController",
+      "filePath": "src/admin/users/admin-users.controller.ts",
+      "summary": "Handles user list retrieval and locking/unlocking.",
+      "tags": [
+        "controller",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/admin/users/admin-users.service.ts:AdminUsersService",
+      "type": "class",
+      "name": "AdminUsersService",
+      "filePath": "src/admin/users/admin-users.service.ts",
+      "summary": "Service for admin user operations, including finding users and toggling user lock status.",
+      "tags": [
+        "service",
+        "admin",
+        "user"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/users/admin-users.module.ts",
+      "type": "file",
+      "name": "admin-users.module.ts",
+      "filePath": "src/admin/users/admin-users.module.ts",
+      "summary": "NestJS module for administrative user features.",
+      "tags": [
+        "module",
+        "admin"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/admin/users/admin-users.module.ts:AdminUsersModule",
+      "type": "class",
+      "name": "AdminUsersModule",
+      "filePath": "src/admin/users/admin-users.module.ts",
+      "summary": "Configures dependencies for administrative user management.",
+      "tags": [
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/admin/users/admin-users.repository.ts",
+      "type": "file",
+      "name": "admin-users.repository.ts",
+      "filePath": "src/admin/users/admin-users.repository.ts",
+      "summary": "Repository for managing users in the admin section. Handles fetching all users and updating user details via Prisma.",
+      "tags": [
+        "repository",
+        "admin",
+        "user",
+        "prisma"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/admin/users/admin-users.service.ts",
+      "type": "file",
+      "name": "admin-users.service.ts",
+      "filePath": "src/admin/users/admin-users.service.ts",
+      "summary": "Service for admin user operations, including finding users and toggling user lock status.",
+      "tags": [
+        "service",
+        "admin",
+        "user"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app.controller.spec.ts",
+      "type": "file",
+      "name": "app.controller.spec.ts",
+      "filePath": "src/app.controller.spec.ts",
+      "summary": "Unit tests for AppController.",
+      "tags": [
+        "test",
+        "controller"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app.controller.ts",
+      "type": "file",
+      "name": "app.controller.ts",
+      "filePath": "src/app.controller.ts",
+      "summary": "Main application controller with health check, error triggers, and a guarded dashboard endpoint.",
+      "tags": [
+        "controller",
+        "app",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/app.module.ts",
+      "type": "file",
+      "name": "app.module.ts",
+      "filePath": "src/app.module.ts",
+      "summary": "Root module of the application. Orchestrates all feature modules, configuration, and global settings like Redis caching and validation pipes.",
+      "tags": [
+        "module",
+        "root"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/app.service.ts",
+      "type": "file",
+      "name": "app.service.ts",
+      "filePath": "src/app.service.ts",
+      "summary": "Main application service providing a simple greeting.",
+      "tags": [
+        "service",
+        "app"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/auth.controller.ts",
+      "type": "file",
+      "name": "auth.controller.ts",
+      "filePath": "src/auth/auth.controller.ts",
+      "summary": "Controller for authentication endpoints: register, login, refresh, and logout.",
+      "tags": [
+        "controller",
+        "auth"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/auth/auth.guard.ts",
+      "type": "file",
+      "name": "auth.guard.ts",
+      "filePath": "src/auth/auth.guard.ts",
+      "summary": "Authentication guard that validates JWT access tokens from cookies and checks user status.",
+      "tags": [
+        "guard",
+        "auth"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/auth/auth.module.ts",
+      "type": "file",
+      "name": "auth.module.ts",
+      "filePath": "src/auth/auth.module.ts",
+      "summary": "Module for authentication logic, importing UserModule and exporting AuthService and AuthGuard.",
+      "tags": [
+        "module",
+        "auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/auth.service.ts",
+      "type": "file",
+      "name": "auth.service.ts",
+      "filePath": "src/auth/auth.service.ts",
+      "summary": "Core authentication service handling registration, login, token generation, refresh logic, and logout. Uses bcrypt for hashing and jsonwebtoken for token operations.",
+      "tags": [
+        "service",
+        "auth",
+        "security"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/auth/dto/auth-response.dto.ts",
+      "type": "file",
+      "name": "auth-response.dto.ts",
+      "filePath": "src/auth/dto/auth-response.dto.ts",
+      "summary": "DTO for authentication responses, including success flag, message, access token, and user data.",
+      "tags": [
+        "dto",
+        "auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/dto/jwt-payload.dto.ts",
+      "type": "file",
+      "name": "jwt-payload.dto.ts",
+      "filePath": "src/auth/dto/jwt-payload.dto.ts",
+      "summary": "DTO representing the structure of the JWT payload.",
+      "tags": [
+        "dto",
+        "auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/dto/login.dto.ts",
+      "type": "file",
+      "name": "login.dto.ts",
+      "filePath": "src/auth/dto/login.dto.ts",
+      "summary": "DTO for login requests with email and password validation.",
+      "tags": [
+        "dto",
+        "auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/dto/register.dto.ts",
+      "type": "file",
+      "name": "register.dto.ts",
+      "filePath": "src/auth/dto/register.dto.ts",
+      "summary": "DTO for registration requests with email, password, and name validation.",
+      "tags": [
+        "dto",
+        "auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/dto/token.dto.ts",
+      "type": "file",
+      "name": "token.dto.ts",
+      "filePath": "src/auth/dto/token.dto.ts",
+      "summary": "DTO for access and refresh tokens.",
+      "tags": [
+        "dto",
+        "auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/auth/dto/user-response.dto.ts",
+      "type": "file",
+      "name": "user-response.dto.ts",
+      "filePath": "src/auth/dto/user-response.dto.ts",
+      "summary": "DTO for user data returned in authentication responses, excluding sensitive fields.",
+      "tags": [
+        "dto",
+        "auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/cart/cart.controller.ts",
+      "type": "file",
+      "name": "cart.controller.ts",
+      "filePath": "src/cart/cart.controller.ts",
+      "summary": "Controller for managing customer shopping carts. Restricted to CUSTOMER role.",
+      "tags": [
+        "controller",
+        "cart"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/cart/cart.module.ts",
+      "type": "file",
+      "name": "cart.module.ts",
+      "filePath": "src/cart/cart.module.ts",
+      "summary": "Module for cart functionality, importing AuthModule.",
+      "tags": [
+        "module",
+        "cart"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/cart/cart.service.ts",
+      "type": "file",
+      "name": "cart.service.ts",
+      "filePath": "src/cart/cart.service.ts",
+      "summary": "Service for cart business logic. Handles items, stock validation, and caching cart data in Redis.",
+      "tags": [
+        "service",
+        "cart",
+        "redis"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/cart/dto/add-cart-item.dto.ts",
+      "type": "file",
+      "name": "add-cart-item.dto.ts",
+      "filePath": "src/cart/dto/add-cart-item.dto.ts",
+      "summary": "DTO for adding an item to the cart.",
+      "tags": [
+        "dto",
+        "cart"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/cart/dto/cart-response.dto.ts",
+      "type": "file",
+      "name": "cart-response.dto.ts",
+      "filePath": "src/cart/dto/cart-response.dto.ts",
+      "summary": "DTO for cart data responses, including item details and totals.",
+      "tags": [
+        "dto",
+        "cart"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/cart/dto/update-cart-item.dto.ts",
+      "type": "file",
+      "name": "update-cart-item.dto.ts",
+      "filePath": "src/cart/dto/update-cart-item.dto.ts",
+      "summary": "DTO for updating cart item quantity.",
+      "tags": [
+        "dto",
+        "cart"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/catalog/categories/categories.controller.ts",
+      "type": "file",
+      "name": "categories.controller.ts",
+      "filePath": "src/catalog/categories/categories.controller.ts",
+      "summary": "Public controller for browsing product categories.",
+      "tags": [
+        "controller",
+        "catalog",
+        "category"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/catalog/categories/categories.module.ts",
+      "type": "file",
+      "name": "categories.module.ts",
+      "filePath": "src/catalog/categories/categories.module.ts",
+      "summary": "Module for product categories in the catalog.",
+      "tags": [
+        "module",
+        "catalog",
+        "category"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/catalog/categories/categories.service.ts",
+      "type": "file",
+      "name": "categories.service.ts",
+      "filePath": "src/catalog/categories/categories.service.ts",
+      "summary": "Service for fetching product categories with Redis caching.",
+      "tags": [
+        "service",
+        "catalog",
+        "category",
+        "redis"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/catalog/dto/product-query.dto.ts",
+      "type": "file",
+      "name": "product-query.dto.ts",
+      "filePath": "src/catalog/dto/product-query.dto.ts",
+      "summary": "Data transfer object for querying products with filtering, searching, and pagination support.",
+      "tags": [
+        "dto",
+        "catalog",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/catalog/dto/product-query.dto.ts:ProductQueryDto",
+      "type": "class",
+      "name": "ProductQueryDto",
+      "filePath": "src/catalog/dto/product-query.dto.ts",
+      "summary": "DTO class extending PaginationQueryDto for product-specific query parameters.",
+      "tags": [
+        "class",
+        "dto"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/catalog/products/products.controller.ts",
+      "type": "file",
+      "name": "products.controller.ts",
+      "filePath": "src/catalog/products/products.controller.ts",
+      "summary": "Controller handling public catalog endpoints for listing and retrieving products.",
+      "tags": [
+        "controller",
+        "catalog",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/catalog/products/products.controller.ts:ProductsController",
+      "type": "class",
+      "name": "ProductsController",
+      "filePath": "src/catalog/products/products.controller.ts",
+      "summary": "NestJS controller for managing product-related HTTP requests in the public catalog.",
+      "tags": [
+        "class",
+        "controller"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/catalog/products/products.module.ts",
+      "type": "file",
+      "name": "products.module.ts",
+      "filePath": "src/catalog/products/products.module.ts",
+      "summary": "NestJS module definition for the product catalog feature.",
+      "tags": [
+        "module",
+        "catalog"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/catalog/products/products.module.ts:CatalogProductsModule",
+      "type": "class",
+      "name": "CatalogProductsModule",
+      "filePath": "src/catalog/products/products.module.ts",
+      "summary": "Module class that wires up products controller and service with Prisma and Redis.",
+      "tags": [
+        "class",
+        "module"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/catalog/products/products.service.ts",
+      "type": "file",
+      "name": "products.service.ts",
+      "filePath": "src/catalog/products/products.service.ts",
+      "summary": "Service layer handling business logic for products, including complex queries and Redis caching.",
+      "tags": [
+        "service",
+        "catalog",
+        "logic",
+        "cache"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/catalog/products/products.service.ts:ProductsService",
+      "type": "class",
+      "name": "ProductsService",
+      "filePath": "src/catalog/products/products.service.ts",
+      "summary": "Injectable service providing methods to find products and handle product details with caching.",
+      "tags": [
+        "class",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/common/constants/cache.constants.ts",
+      "type": "config",
+      "name": "cache.constants.ts",
+      "filePath": "src/common/constants/cache.constants.ts",
+      "summary": "Centralized definition of Redis cache keys and TTL (Time-To-Live) values.",
+      "tags": [
+        "constants",
+        "cache",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/common/decorators/roles.decorator.ts",
+      "type": "file",
+      "name": "roles.decorator.ts",
+      "filePath": "src/common/decorators/roles.decorator.ts",
+      "summary": "Custom NestJS decorator for specifying required user roles on endpoints.",
+      "tags": [
+        "decorator",
+        "auth",
+        "rbac"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/common/dto/pagination-query.dto.ts",
+      "type": "file",
+      "name": "pagination-query.dto.ts",
+      "filePath": "src/common/dto/pagination-query.dto.ts",
+      "summary": "Base DTO for all paginated requests, providing standard page, limit, and sort parameters.",
+      "tags": [
+        "dto",
+        "common",
+        "pagination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/common/dto/pagination-query.dto.ts:PaginationQueryDto",
+      "type": "class",
+      "name": "PaginationQueryDto",
+      "filePath": "src/common/dto/pagination-query.dto.ts",
+      "summary": "Class defining standard pagination and sorting properties for API queries.",
+      "tags": [
+        "class",
+        "dto"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/common/filters/all-exceptions.filter.ts",
+      "type": "file",
+      "name": "all-exceptions.filter.ts",
+      "filePath": "src/common/filters/all-exceptions.filter.ts",
+      "summary": "Global exception filter that standardizes error responses and logs failures.",
+      "tags": [
+        "filter",
+        "common",
+        "error-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/common/filters/all-exceptions.filter.ts:AllExceptionsFilter",
+      "type": "class",
+      "name": "AllExceptionsFilter",
+      "filePath": "src/common/filters/all-exceptions.filter.ts",
+      "summary": "Custom NestJS exception filter to catch and format all unhandled exceptions.",
+      "tags": [
+        "class",
+        "filter"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/common/guards/roles.guard.ts",
+      "type": "file",
+      "name": "roles.guard.ts",
+      "filePath": "src/common/guards/roles.guard.ts",
+      "summary": "Guard that implements role-based access control by checking user roles against required roles.",
+      "tags": [
+        "guard",
+        "auth",
+        "rbac"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/common/guards/roles.guard.ts:RolesGuard",
+      "type": "class",
+      "name": "RolesGuard",
+      "filePath": "src/common/guards/roles.guard.ts",
+      "summary": "Injectable guard for verifying user authorization based on custom role metadata.",
+      "tags": [
+        "class",
+        "guard"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/common/interceptors/transform.interceptor.ts",
+      "type": "file",
+      "name": "transform.interceptor.ts",
+      "filePath": "src/common/interceptors/transform.interceptor.ts",
+      "summary": "Interceptor that transforms all successful API responses into a consistent JSON format.",
+      "tags": [
+        "interceptor",
+        "common",
+        "api",
+        "tested"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/common/interceptors/transform.interceptor.ts:TransformInterceptor",
+      "type": "class",
+      "name": "TransformInterceptor",
+      "filePath": "src/common/interceptors/transform.interceptor.ts",
+      "summary": "NestJS interceptor to wrap response data with status codes and success messages.",
+      "tags": [
+        "class",
+        "interceptor"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/common/interceptors/transform.interceptor.spec.ts",
+      "type": "file",
+      "name": "transform.interceptor.spec.ts",
+      "filePath": "src/common/interceptors/transform.interceptor.spec.ts",
+      "summary": "Unit tests for the TransformInterceptor ensuring correct response wrapping.",
+      "tags": [
+        "test",
+        "common",
+        "unit-test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/common/interfaces/api-response.interface.ts",
+      "type": "file",
+      "name": "api-response.interface.ts",
+      "filePath": "src/common/interfaces/api-response.interface.ts",
+      "summary": "TypeScript interfaces defining the structure of standardized and paginated API responses.",
+      "tags": [
+        "interface",
+        "common",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/common/utils/api-response.util.ts",
+      "type": "file",
+      "name": "api-response.util.ts",
+      "filePath": "src/common/utils/api-response.util.ts",
+      "summary": "Utility functions to quickly create standardized and paginated response objects.",
+      "tags": [
+        "utility",
+        "common",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/common/utils/api-response.util.ts:success",
+      "type": "function",
+      "name": "success",
+      "filePath": "src/common/utils/api-response.util.ts",
+      "summary": "Helper function for generating a standard successful API response.",
+      "tags": [
+        "function",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/common/utils/api-response.util.ts:paginated",
+      "type": "function",
+      "name": "paginated",
+      "filePath": "src/common/utils/api-response.util.ts",
+      "summary": "Helper function for generating a standardized paginated API response with metadata.",
+      "tags": [
+        "function",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/main.ts",
+      "type": "file",
+      "name": "main.ts",
+      "filePath": "src/main.ts",
+      "summary": "Entry point for the NestJS application, configuring global pipes, filters, and interceptors.",
+      "tags": [
+        "bootstrap",
+        "entry-point",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/orders/dto/checkout.dto.ts",
+      "type": "file",
+      "name": "checkout.dto.ts",
+      "filePath": "src/orders/dto/checkout.dto.ts",
+      "summary": "Data transfer object for checking out a shopping cart.",
+      "tags": [
+        "dto",
+        "orders",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/orders/dto/order-response.dto.ts",
+      "type": "file",
+      "name": "order-response.dto.ts",
+      "filePath": "src/orders/dto/order-response.dto.ts",
+      "summary": "DTO definitions for order and order item responses.",
+      "tags": [
+        "dto",
+        "orders"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/orders/orders.controller.ts",
+      "type": "file",
+      "name": "orders.controller.ts",
+      "filePath": "src/orders/orders.controller.ts",
+      "summary": "Controller for order management, restricted to authenticated customers.",
+      "tags": [
+        "controller",
+        "orders",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/orders/orders.controller.ts:OrdersController",
+      "type": "class",
+      "name": "OrdersController",
+      "filePath": "src/orders/orders.controller.ts",
+      "summary": "NestJS controller for handling checkout and order retrieval.",
+      "tags": [
+        "class",
+        "controller"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/orders/orders.module.ts",
+      "type": "file",
+      "name": "orders.module.ts",
+      "filePath": "src/orders/orders.module.ts",
+      "summary": "NestJS module for order processing functionality.",
+      "tags": [
+        "module",
+        "orders"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/orders/orders.service.ts",
+      "type": "file",
+      "name": "orders.service.ts",
+      "filePath": "src/orders/orders.service.ts",
+      "summary": "Service layer managing the complex transaction logic of checking out and creating orders.",
+      "tags": [
+        "service",
+        "orders",
+        "logic",
+        "transaction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:src/orders/orders.service.ts:OrdersService",
+      "type": "class",
+      "name": "OrdersService",
+      "filePath": "src/orders/orders.service.ts",
+      "summary": "Injectable service handling cart-to-order conversion and inventory updates.",
+      "tags": [
+        "class",
+        "service"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/prisma/prisma.module.ts",
+      "type": "file",
+      "name": "prisma.module.ts",
+      "filePath": "src/prisma/prisma.module.ts",
+      "summary": "Global module providing the Prisma service for database access.",
+      "tags": [
+        "module",
+        "database",
+        "global"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/prisma/prisma.service.ts",
+      "type": "file",
+      "name": "prisma.service.ts",
+      "filePath": "src/prisma/prisma.service.ts",
+      "summary": "Service for interacting with the database using Prisma Client and PostgreSQL adapter.",
+      "tags": [
+        "service",
+        "database",
+        "orm"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/prisma/prisma.service.ts:PrismaService",
+      "type": "class",
+      "name": "PrismaService",
+      "filePath": "src/prisma/prisma.service.ts",
+      "summary": "Database client service that manages connections and transactions via Prisma.",
+      "tags": [
+        "class",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/redis/redis.module.ts",
+      "type": "file",
+      "name": "redis.module.ts",
+      "filePath": "src/redis/redis.module.ts",
+      "summary": "Global module providing the Redis service for caching.",
+      "tags": [
+        "module",
+        "cache",
+        "global"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/redis/redis.service.ts",
+      "type": "file",
+      "name": "redis.service.ts",
+      "filePath": "src/redis/redis.service.ts",
+      "summary": "Service wrapping the cache manager to provide simplified Redis operations.",
+      "tags": [
+        "service",
+        "cache",
+        "redis"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/redis/redis.service.ts:RedisService",
+      "type": "class",
+      "name": "RedisService",
+      "filePath": "src/redis/redis.service.ts",
+      "summary": "Injectable service for getting, setting, and invalidating Redis cache entries.",
+      "tags": [
+        "class",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/redis/redis.service.ts:RedisService:del",
+      "type": "function",
+      "name": "del",
+      "filePath": "src/redis/redis.service.ts",
+      "summary": "Invalidates a cache entry by key.",
+      "tags": [
+        "method",
+        "cache-invalidation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/redis/redis.service.ts:RedisService:getOrSet",
+      "type": "function",
+      "name": "getOrSet",
+      "filePath": "src/redis/redis.service.ts",
+      "summary": "Retrieves data from cache or fetches it and caches it if missing.",
+      "tags": [
+        "method",
+        "cache-aside"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/user/dto/create-user.dto.ts",
+      "type": "file",
+      "name": "create-user.dto.ts",
+      "filePath": "src/user/dto/create-user.dto.ts",
+      "summary": "DTO for creating a new user account with email and password validation.",
+      "tags": [
+        "dto",
+        "user",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/user/dto/update-me.dto.ts",
+      "type": "file",
+      "name": "update-me.dto.ts",
+      "filePath": "src/user/dto/update-me.dto.ts",
+      "summary": "DTO for updating current user profile information.",
+      "tags": [
+        "dto",
+        "user",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/user/dto/update-user.dto.ts",
+      "type": "file",
+      "name": "update-user.dto.ts",
+      "filePath": "src/user/dto/update-user.dto.ts",
+      "summary": "Data transfer object for updating user information.",
+      "tags": [
+        "dto",
+        "user",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/user/dto/update-user.dto.ts:UpdateUserDto",
+      "type": "class",
+      "name": "UpdateUserDto",
+      "filePath": "src/user/dto/update-user.dto.ts",
+      "summary": "Class defining the fields allowed for updating a user profile, with validation decorators.",
+      "tags": [
+        "dto",
+        "user",
+        "class"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/user/user.controller.ts",
+      "type": "file",
+      "name": "user.controller.ts",
+      "filePath": "src/user/user.controller.ts",
+      "summary": "Controller handling user-related HTTP requests like retrieving and updating the current user's profile.",
+      "tags": [
+        "controller",
+        "user",
+        "api"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/user/user.controller.ts:UserController",
+      "type": "class",
+      "name": "UserController",
+      "filePath": "src/user/user.controller.ts",
+      "summary": "NestJS controller that exposes endpoints for user profile management.",
+      "tags": [
+        "controller",
+        "user",
+        "class"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/user/user.controller.ts:UserController:getMe",
+      "type": "function",
+      "name": "getMe",
+      "filePath": "src/user/user.controller.ts",
+      "summary": "Retrieves the current authenticated user's profile information.",
+      "tags": [
+        "method",
+        "user",
+        "profile"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/user/user.controller.ts:UserController:updateMe",
+      "type": "function",
+      "name": "updateMe",
+      "filePath": "src/user/user.controller.ts",
+      "summary": "Updates the current authenticated user's profile, including name and password hashing.",
+      "tags": [
+        "method",
+        "user",
+        "update"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "endpoint:src/user/user.controller.ts:users/me:GET",
+      "type": "endpoint",
+      "name": "GET /users/me",
+      "filePath": "src/user/user.controller.ts",
+      "summary": "Endpoint to fetch the current user's details.",
+      "tags": [
+        "endpoint",
+        "get",
+        "me"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:src/user/user.controller.ts:users/me:PATCH",
+      "type": "endpoint",
+      "name": "PATCH /users/me",
+      "filePath": "src/user/user.controller.ts",
+      "summary": "Endpoint to update the current user's details.",
+      "tags": [
+        "endpoint",
+        "patch",
+        "me"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/user/user.module.ts",
+      "type": "file",
+      "name": "user.module.ts",
+      "filePath": "src/user/user.module.ts",
+      "summary": "Module definition for user-related functionality, wireing up controllers and services.",
+      "tags": [
+        "module",
+        "user",
+        "nest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/user/user.module.ts:UserModule",
+      "type": "class",
+      "name": "UserModule",
+      "filePath": "src/user/user.module.ts",
+      "summary": "NestJS module that encapsulates the user domain.",
+      "tags": [
+        "module",
+        "user",
+        "class"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/user/user.service.ts",
+      "type": "file",
+      "name": "user.service.ts",
+      "filePath": "src/user/user.service.ts",
+      "summary": "Service handling business logic for users, including database operations via Prisma and caching via Redis.",
+      "tags": [
+        "service",
+        "user",
+        "logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/user/user.service.ts:UserService",
+      "type": "class",
+      "name": "UserService",
+      "filePath": "src/user/user.service.ts",
+      "summary": "Injectable service for user management operations.",
+      "tags": [
+        "service",
+        "user",
+        "class"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/user/user.service.ts:UserService:create",
+      "type": "function",
+      "name": "create",
+      "filePath": "src/user/user.service.ts",
+      "summary": "Creates a new user in the database and invalidates the user cache.",
+      "tags": [
+        "method",
+        "create",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/user/user.service.ts:UserService:findByEmail",
+      "type": "function",
+      "name": "findByEmail",
+      "filePath": "src/user/user.service.ts",
+      "summary": "Finds a user by their email address.",
+      "tags": [
+        "method",
+        "find",
+        "email"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/user/user.service.ts:UserService:findById",
+      "type": "function",
+      "name": "findById",
+      "filePath": "src/user/user.service.ts",
+      "summary": "Finds a user by their unique ID.",
+      "tags": [
+        "method",
+        "find",
+        "id"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/user/user.service.ts:UserService:update",
+      "type": "function",
+      "name": "update",
+      "filePath": "src/user/user.service.ts",
+      "summary": "Updates an existing user's data and invalidates the user cache.",
+      "tags": [
+        "method",
+        "update",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/user/user.service.ts:UserService:delete",
+      "type": "function",
+      "name": "delete",
+      "filePath": "src/user/user.service.ts",
+      "summary": "Deletes a user from the database and invalidates the user cache.",
+      "tags": [
+        "method",
+        "delete",
+        "persistence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/user/user.service.ts:UserService:getAllUsers",
+      "type": "function",
+      "name": "getAllUsers",
+      "filePath": "src/user/user.service.ts",
+      "summary": "Retrieves all users with caching logic using Redis.",
+      "tags": [
+        "method",
+        "cache",
+        "list"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:prisma:User",
+      "type": "table",
+      "name": "User",
+      "filePath": "prisma/schema.prisma",
+      "summary": "Database table representing system users with roles and status.",
+      "tags": [
+        "prisma",
+        "schema",
+        "table"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/auth/auth.guard.ts:AuthGuard",
+      "type": "class",
+      "name": "AuthGuard",
+      "filePath": "src/auth/auth.guard.ts",
+      "summary": "Authentication guard that validates JWT access tokens from cookies and checks user status.",
+      "tags": [
+        "guard",
+        "auth"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/admin/categories/admin-categories-cache.service.ts",
+      "target": "class:src/admin/categories/admin-categories-cache.service.ts:AdminCategoriesCacheService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/categories/admin-categories-cache.service.ts:AdminCategoriesCacheService",
+      "target": "function:src/admin/categories/admin-categories-cache.service.ts:AdminCategoriesCacheService:invalidateCategoryCache",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/categories/admin-categories-cache.service.ts",
+      "target": "file:src/common/constants/cache.constants.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/categories/admin-categories-cache.service.ts",
+      "target": "file:src/redis/redis.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/categories/admin-categories-cache.service.ts:AdminCategoriesCacheService",
+      "target": "class:src/redis/redis.service.ts:RedisService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/categories/admin-categories.controller.ts",
+      "target": "class:src/admin/categories/admin-categories.controller.ts:AdminCategoriesController",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/categories/admin-categories.controller.ts",
+      "target": "file:src/admin/categories/admin-categories.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/categories/admin-categories.controller.ts:AdminCategoriesController",
+      "target": "class:src/admin/categories/admin-categories.service.ts:AdminCategoriesService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/categories/admin-categories.module.ts",
+      "target": "class:src/admin/categories/admin-categories.module.ts:AdminCategoriesModule",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/categories/admin-categories.module.ts:AdminCategoriesModule",
+      "target": "class:src/admin/categories/admin-categories.controller.ts:AdminCategoriesController",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/categories/admin-categories.module.ts:AdminCategoriesModule",
+      "target": "class:src/admin/categories/admin-categories.service.ts:AdminCategoriesService",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/categories/admin-categories.repository.ts",
+      "target": "class:src/admin/categories/admin-categories.repository.ts:AdminCategoriesRepository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/categories/admin-categories.repository.ts:AdminCategoriesRepository",
+      "target": "class:src/prisma/prisma.service.ts:PrismaService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/categories/admin-categories.service.ts",
+      "target": "class:src/admin/categories/admin-categories.service.ts:AdminCategoriesService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/categories/admin-categories.service.ts:AdminCategoriesService",
+      "target": "class:src/admin/categories/admin-categories.repository.ts:AdminCategoriesRepository",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/categories/admin-categories.service.ts:AdminCategoriesService",
+      "target": "class:src/admin/categories/admin-categories-cache.service.ts:AdminCategoriesCacheService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/orders/admin-orders.controller.ts",
+      "target": "class:src/admin/orders/admin-orders.controller.ts:AdminOrdersController",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/orders/admin-orders.controller.ts:AdminOrdersController",
+      "target": "class:src/admin/orders/admin-orders.service.ts:AdminOrdersService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/orders/admin-orders.module.ts",
+      "target": "class:src/admin/orders/admin-orders.module.ts:AdminOrdersModule",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/orders/admin-orders.repository.ts",
+      "target": "class:src/admin/orders/admin-orders.repository.ts:AdminOrdersRepository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/orders/admin-orders.repository.ts:AdminOrdersRepository",
+      "target": "class:src/prisma/prisma.service.ts:PrismaService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/orders/admin-orders.service.ts",
+      "target": "class:src/admin/orders/admin-orders.service.ts:AdminOrdersService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/orders/admin-orders.service.ts:AdminOrdersService",
+      "target": "class:src/admin/orders/admin-orders.repository.ts:AdminOrdersRepository",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/products/admin-products-cache.service.ts",
+      "target": "class:src/admin/products/admin-products-cache.service.ts:AdminProductsCacheService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/products/admin-products.controller.ts",
+      "target": "class:src/admin/products/admin-products.controller.ts:AdminProductsController",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/products/admin-products.controller.ts:AdminProductsController",
+      "target": "class:src/admin/products/admin-products.service.ts:AdminProductsService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/products/admin-products.helper.ts",
+      "target": "class:src/admin/products/admin-products.helper.ts:AdminProductsHelper",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/products/admin-products.module.ts",
+      "target": "class:src/admin/products/admin-products.module.ts:AdminProductsModule",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/products/admin-products.repository.ts",
+      "target": "class:src/admin/products/admin-products.repository.ts:AdminProductsRepository",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/products/admin-products.repository.ts:AdminProductsRepository",
+      "target": "class:src/prisma/prisma.service.ts:PrismaService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/products/admin-products.service.ts",
+      "target": "class:src/admin/products/admin-products.service.ts:AdminProductsService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/products/admin-products.service.ts:AdminProductsService",
+      "target": "class:src/admin/products/admin-products.repository.ts:AdminProductsRepository",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/products/admin-products.service.ts:AdminProductsService",
+      "target": "class:src/admin/products/admin-products.helper.ts:AdminProductsHelper",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/products/admin-products.service.ts:AdminProductsService",
+      "target": "class:src/admin/products/admin-products-cache.service.ts:AdminProductsCacheService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/products/admin-products.service.ts:AdminProductsService",
+      "target": "class:src/admin/categories/admin-categories.repository.ts:AdminCategoriesRepository",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/users/admin-users.controller.ts",
+      "target": "class:src/admin/users/admin-users.controller.ts:AdminUsersController",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/admin/users/admin-users.controller.ts:AdminUsersController",
+      "target": "class:src/admin/users/admin-users.service.ts:AdminUsersService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/users/admin-users.module.ts",
+      "target": "class:src/admin/users/admin-users.module.ts:AdminUsersModule",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/users/admin-users.repository.ts",
+      "target": "file:src/prisma/prisma.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/admin/users/admin-users.service.ts",
+      "target": "file:src/admin/users/admin-users.repository.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.controller.spec.ts",
+      "target": "file:src/app.controller.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.controller.spec.ts",
+      "target": "file:src/app.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.controller.spec.ts",
+      "target": "file:src/auth/auth.guard.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.controller.ts",
+      "target": "file:src/app.controller.spec.ts",
+      "type": "tested_by",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.controller.ts",
+      "target": "file:src/app.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.controller.ts",
+      "target": "file:src/auth/auth.guard.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/app.controller.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/app.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/prisma/prisma.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/auth/auth.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/user/user.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/redis/redis.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/catalog/products/products.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/catalog/categories/categories.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/cart/cart.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/orders/orders.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/admin/users/admin-users.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/admin/products/admin-products.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/admin/categories/admin-categories.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/app.module.ts",
+      "target": "file:src/admin/orders/admin-orders.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.controller.ts",
+      "target": "file:src/auth/auth.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.controller.ts",
+      "target": "file:src/auth/dto/register.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.controller.ts",
+      "target": "file:src/auth/dto/login.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.controller.ts",
+      "target": "file:src/auth/dto/auth-response.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.guard.ts",
+      "target": "file:src/auth/auth.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.guard.ts",
+      "target": "file:src/auth/dto/jwt-payload.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.guard.ts",
+      "target": "file:src/user/user.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.module.ts",
+      "target": "file:src/auth/auth.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.module.ts",
+      "target": "file:src/auth/auth.controller.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.module.ts",
+      "target": "file:src/user/user.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.module.ts",
+      "target": "file:src/auth/auth.guard.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.service.ts",
+      "target": "file:src/user/user.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.service.ts",
+      "target": "file:src/auth/dto/register.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.service.ts",
+      "target": "file:src/auth/dto/login.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.service.ts",
+      "target": "file:src/auth/dto/token.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.service.ts",
+      "target": "file:src/auth/dto/auth-response.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.service.ts",
+      "target": "file:src/auth/dto/user-response.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/auth.service.ts",
+      "target": "file:src/auth/dto/jwt-payload.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/auth/dto/auth-response.dto.ts",
+      "target": "file:src/auth/dto/user-response.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.controller.ts",
+      "target": "file:src/auth/auth.guard.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.controller.ts",
+      "target": "file:src/auth/dto/jwt-payload.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.controller.ts",
+      "target": "file:src/common/guards/roles.guard.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.controller.ts",
+      "target": "file:src/cart/cart.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.controller.ts",
+      "target": "file:src/cart/dto/add-cart-item.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.controller.ts",
+      "target": "file:src/cart/dto/update-cart-item.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.controller.ts",
+      "target": "file:src/cart/dto/cart-response.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.module.ts",
+      "target": "file:src/auth/auth.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.module.ts",
+      "target": "file:src/cart/cart.controller.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.module.ts",
+      "target": "file:src/cart/cart.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.service.ts",
+      "target": "file:src/prisma/prisma.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.service.ts",
+      "target": "file:src/redis/redis.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.service.ts",
+      "target": "file:src/cart/dto/add-cart-item.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.service.ts",
+      "target": "file:src/cart/dto/update-cart-item.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/cart/cart.service.ts",
+      "target": "file:src/cart/dto/cart-response.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/categories/categories.controller.ts",
+      "target": "file:src/catalog/categories/categories.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/categories/categories.module.ts",
+      "target": "file:src/catalog/categories/categories.controller.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/categories/categories.module.ts",
+      "target": "file:src/catalog/categories/categories.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/categories/categories.module.ts",
+      "target": "file:src/prisma/prisma.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/categories/categories.module.ts",
+      "target": "file:src/redis/redis.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/categories/categories.service.ts",
+      "target": "file:src/prisma/prisma.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/categories/categories.service.ts",
+      "target": "file:src/redis/redis.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/dto/product-query.dto.ts",
+      "target": "file:src/common/dto/pagination-query.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/catalog/dto/product-query.dto.ts:ProductQueryDto",
+      "target": "class:src/common/dto/pagination-query.dto.ts:PaginationQueryDto",
+      "type": "inherits",
+      "weight": 0.9,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/products/products.controller.ts",
+      "target": "file:src/catalog/products/products.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/products/products.controller.ts",
+      "target": "file:src/catalog/dto/product-query.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/catalog/products/products.controller.ts:ProductsController",
+      "target": "class:src/catalog/products/products.service.ts:ProductsService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/products/products.module.ts",
+      "target": "file:src/prisma/prisma.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/products/products.module.ts",
+      "target": "file:src/redis/redis.module.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/products/products.service.ts",
+      "target": "file:src/prisma/prisma.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/products/products.service.ts",
+      "target": "file:src/redis/redis.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/catalog/products/products.service.ts",
+      "target": "file:src/common/constants/cache.constants.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/catalog/products/products.service.ts:ProductsService",
+      "target": "class:src/prisma/prisma.service.ts:PrismaService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/catalog/products/products.service.ts:ProductsService",
+      "target": "class:src/redis/redis.service.ts:RedisService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/common/guards/roles.guard.ts",
+      "target": "file:src/common/decorators/roles.decorator.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/common/interceptors/transform.interceptor.ts",
+      "target": "file:src/common/interfaces/api-response.interface.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/common/utils/api-response.util.ts",
+      "target": "file:src/common/interfaces/api-response.interface.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/main.ts",
+      "target": "file:src/common/filters/all-exceptions.filter.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/main.ts",
+      "target": "file:src/common/interceptors/transform.interceptor.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/orders/orders.controller.ts",
+      "target": "file:src/orders/orders.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/orders/orders.controller.ts",
+      "target": "file:src/common/guards/roles.guard.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/orders/orders.service.ts",
+      "target": "file:src/prisma/prisma.service.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/orders/orders.service.ts",
+      "target": "file:src/orders/dto/checkout.dto.ts",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/orders/orders.service.ts:OrdersService",
+      "target": "class:src/prisma/prisma.service.ts:PrismaService",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/common/interceptors/transform.interceptor.ts",
+      "target": "file:src/common/interceptors/transform.interceptor.spec.ts",
+      "type": "tested_by",
+      "weight": 0.5,
+      "direction": "forward",
+      "description": "Direction corrected (was test → production)"
+    },
+    {
+      "source": "file:src/user/dto/update-user.dto.ts",
+      "target": "class:src/user/dto/update-user.dto.ts:UpdateUserDto",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.controller.ts",
+      "target": "class:src/user/user.controller.ts:UserController",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/user/user.controller.ts:UserController",
+      "target": "function:src/user/user.controller.ts:UserController:getMe",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/user/user.controller.ts:UserController",
+      "target": "function:src/user/user.controller.ts:UserController:updateMe",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.controller.ts",
+      "target": "class:src/user/user.service.ts:UserService",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.controller.ts",
+      "target": "class:src/auth/auth.guard.ts:AuthGuard",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.controller.ts",
+      "target": "class:src/user/dto/update-user.dto.ts:UpdateUserDto",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.controller.ts:UserController:getMe",
+      "target": "function:src/user/user.service.ts:UserService:findById",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.controller.ts:UserController:updateMe",
+      "target": "function:src/user/user.service.ts:UserService:update",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "endpoint:src/user/user.controller.ts:users/me:GET",
+      "target": "function:src/user/user.controller.ts:UserController:getMe",
+      "type": "routes",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "endpoint:src/user/user.controller.ts:users/me:PATCH",
+      "target": "function:src/user/user.controller.ts:UserController:updateMe",
+      "type": "routes",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/user/user.controller.ts:UserController",
+      "target": "class:src/auth/auth.guard.ts:AuthGuard",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.module.ts",
+      "target": "class:src/user/user.module.ts:UserModule",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.module.ts",
+      "target": "class:src/user/user.service.ts:UserService",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.module.ts",
+      "target": "class:src/user/user.controller.ts:UserController",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "class:src/user/user.module.ts:UserModule",
+      "target": "class:src/user/user.service.ts:UserService",
+      "type": "exports",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.service.ts",
+      "target": "class:src/user/user.service.ts:UserService",
+      "type": "contains",
+      "weight": 1,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.service.ts",
+      "target": "class:src/prisma/prisma.service.ts:PrismaService",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.service.ts",
+      "target": "class:src/redis/redis.service.ts:RedisService",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "file:src/user/user.service.ts",
+      "target": "class:src/user/dto/update-user.dto.ts:UpdateUserDto",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:create",
+      "target": "table:prisma:User",
+      "type": "writes_to",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:findByEmail",
+      "target": "table:prisma:User",
+      "type": "reads_from",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:findById",
+      "target": "table:prisma:User",
+      "type": "reads_from",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:update",
+      "target": "table:prisma:User",
+      "type": "writes_to",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:delete",
+      "target": "table:prisma:User",
+      "type": "writes_to",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:getAllUsers",
+      "target": "table:prisma:User",
+      "type": "reads_from",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:create",
+      "target": "function:src/redis/redis.service.ts:RedisService:del",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:update",
+      "target": "function:src/redis/redis.service.ts:RedisService:del",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:delete",
+      "target": "function:src/redis/redis.service.ts:RedisService:del",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    },
+    {
+      "source": "function:src/user/user.service.ts:UserService:getAllUsers",
+      "target": "function:src/redis/redis.service.ts:RedisService:getOrSet",
+      "type": "calls",
+      "weight": 0.8,
+      "direction": "forward"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:api-layer",
+      "name": "API & Presentation Layer",
+      "description": "REST controllers and Data Transfer Objects (DTOs) that define the public interface of the application.",
+      "nodeIds": [
+        "file:src/admin/categories/admin-categories.controller.ts",
+        "file:src/admin/categories/dto/create-category.dto.ts",
+        "file:src/admin/categories/dto/update-category.dto.ts",
+        "file:src/admin/orders/admin-orders.controller.ts",
+        "file:src/admin/orders/dto/admin-order-query.dto.ts",
+        "file:src/admin/orders/dto/admin-order-response.dto.ts",
+        "file:src/admin/orders/dto/update-order-status.dto.ts",
+        "file:src/admin/products/admin-products.controller.ts",
+        "file:src/admin/products/dto/create-product.dto.ts",
+        "file:src/admin/products/dto/product-image-input.dto.ts",
+        "file:src/admin/products/dto/update-product.dto.ts",
+        "file:src/admin/users/admin-users.controller.ts",
+        "file:src/app.controller.ts",
+        "file:src/auth/auth.controller.ts",
+        "file:src/auth/dto/auth-response.dto.ts",
+        "file:src/auth/dto/jwt-payload.dto.ts",
+        "file:src/auth/dto/login.dto.ts",
+        "file:src/auth/dto/register.dto.ts",
+        "file:src/auth/dto/token.dto.ts",
+        "file:src/auth/dto/user-response.dto.ts",
+        "file:src/cart/cart.controller.ts",
+        "file:src/cart/dto/add-cart-item.dto.ts",
+        "file:src/cart/dto/cart-response.dto.ts",
+        "file:src/cart/dto/update-cart-item.dto.ts",
+        "file:src/catalog/categories/categories.controller.ts",
+        "file:src/catalog/dto/product-query.dto.ts",
+        "file:src/catalog/products/products.controller.ts",
+        "file:src/common/dto/pagination-query.dto.ts",
+        "file:src/orders/dto/checkout.dto.ts",
+        "file:src/orders/dto/order-response.dto.ts",
+        "file:src/orders/orders.controller.ts",
+        "file:src/user/dto/create-user.dto.ts",
+        "file:src/user/dto/update-me.dto.ts",
+        "file:src/user/dto/update-user.dto.ts",
+        "file:src/user/user.controller.ts",
+        "endpoint:src/user/user.controller.ts:users/me:GET",
+        "endpoint:src/user/user.controller.ts:users/me:PATCH"
+      ]
+    },
+    {
+      "id": "layer:domain-layer",
+      "name": "Domain & Business Logic Layer",
+      "description": "Services and helpers that implement core business rules and orchestrate domain logic.",
+      "nodeIds": [
+        "file:src/admin/categories/admin-categories-cache.service.ts",
+        "file:src/admin/categories/admin-categories.service.ts",
+        "file:src/admin/orders/admin-orders.service.ts",
+        "file:src/admin/products/admin-products-cache.service.ts",
+        "file:src/admin/products/admin-products.helper.ts",
+        "file:src/admin/products/admin-products.service.ts",
+        "file:src/admin/users/admin-users.service.ts",
+        "file:src/app.service.ts",
+        "file:src/auth/auth.service.ts",
+        "file:src/cart/cart.service.ts",
+        "file:src/catalog/categories/categories.service.ts",
+        "file:src/catalog/products/products.service.ts",
+        "file:src/common/decorators/roles.decorator.ts",
+        "file:src/orders/orders.service.ts",
+        "file:src/prisma/prisma.service.ts",
+        "file:src/redis/redis.service.ts",
+        "file:src/user/user.service.ts"
+      ]
+    },
+    {
+      "id": "layer:data-layer",
+      "name": "Data Access & Persistence Layer",
+      "description": "Repositories, Prisma services, and database schemas for interacting with the persistent storage.",
+      "nodeIds": [
+        "file:src/admin/categories/admin-categories.repository.ts",
+        "file:src/admin/orders/admin-orders.repository.ts",
+        "file:src/admin/products/admin-products.repository.ts",
+        "file:src/admin/users/admin-users.repository.ts",
+        "file:src/prisma/prisma.module.ts",
+        "table:prisma:User"
+      ]
+    },
+    {
+      "id": "layer:application-layer",
+      "name": "Application Orchestration Layer",
+      "description": "Modules and root application files that wire together dependencies and bootstrap the framework.",
+      "nodeIds": [
+        "file:src/admin/categories/admin-categories.module.ts",
+        "file:src/admin/orders/admin-orders.module.ts",
+        "file:src/admin/products/admin-products.module.ts",
+        "file:src/admin/users/admin-users.module.ts",
+        "file:src/app.controller.spec.ts",
+        "file:src/app.module.ts",
+        "file:src/auth/auth.module.ts",
+        "file:src/cart/cart.module.ts",
+        "file:src/catalog/categories/categories.module.ts",
+        "file:src/catalog/products/products.module.ts",
+        "file:src/main.ts",
+        "file:src/orders/orders.module.ts",
+        "file:src/redis/redis.module.ts",
+        "file:src/user/user.module.ts"
+      ]
+    },
+    {
+      "id": "layer:infrastructure-layer",
+      "name": "Infrastructure & Caching Layer",
+      "description": "Redis integration and global configuration for infrastructure services.",
+      "nodeIds": [
+        "file:src/common/constants/cache.constants.ts"
+      ]
+    },
+    {
+      "id": "layer:common-layer",
+      "name": "Common & Cross-cutting Concerns",
+      "description": "Global filters, guards, interceptors, and utility functions shared across the application.",
+      "nodeIds": [
+        "file:src/common/filters/all-exceptions.filter.ts",
+        "file:src/common/guards/roles.guard.ts",
+        "file:src/common/interceptors/transform.interceptor.ts",
+        "file:src/common/interceptors/transform.interceptor.spec.ts",
+        "file:src/common/interfaces/api-response.interface.ts",
+        "file:src/common/utils/api-response.util.ts"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "1. The Application Gateway",
+      "description": "Every enterprise app needs a secure and controlled entry point. In src/main.ts, we bootstrap the NestJS application and register global 'shields': ValidationPipes for input sanitization (Part 1.3) and ExceptionFilters for centralized error logging (Part 6.2). This ensures that no invalid data enters our system and no raw error traces leak to the client.",
+      "nodeIds": [
+        "file:src/main.ts"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "2. The Brain (Root Module)",
+      "description": "src/app.module.ts is the orchestrator. It connects feature modules (Auth, User, Catalog) with infrastructure modules (Prisma, Redis). This modular approach (Part 1.1) is critical for large teams, allowing features to be developed and scaled independently. Notice the CacheModule configuration—this is where we set up our centralized Redis cache (Part 4.2).",
+      "nodeIds": [
+        "file:src/app.module.ts"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "3. Data Integrity & ORM",
+      "description": "Data is the heart of an enterprise system. We use Prisma as our ORM (Part 2). The schema.prisma file defines our data models and relations with strict typing. This provides a single source of truth and enables managed migrations, ensuring our database state is always predictable and safe (Part 2.3).",
+      "nodeIds": [
+        "file:prisma/schema.prisma"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "4. Enterprise Authentication",
+      "description": "Security is not optional. Following Part 3.1 of the roadmap, our Auth service implements the Access + Refresh Token pattern. Access tokens are short-lived for security, while refresh tokens are stored (hashed) in the database to allow revoking sessions if needed. This is a standard practice for high-security applications.",
+      "nodeIds": [
+        "file:src/auth/auth.service.ts"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "5. Performance at Scale (Redis)",
+      "description": "As explained in Part 4.2, we don't use in-memory cache because it doesn't survive restarts or scale horizontally. src/redis/redis.service.ts provides a centralized caching layer. This allows all server instances to share the same cache, ensuring consistency across your entire cluster.",
+      "nodeIds": [
+        "file:src/redis/redis.service.ts"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "6. Business Logic & Service Pattern",
+      "description": "This is where the 'real work' happens. Following Part 1.1, business logic is strictly isolated in Services. Controllers only handle requests and responses, while Services interact with the Database (via Prisma) and the Cache (via Redis). This separation makes the code highly testable and maintainable.",
+      "nodeIds": [
+        "file:src/catalog/products/products.service.ts"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "7. Resilience & Observability",
+      "description": "Things will go wrong in production. The AllExceptionsFilter (Part 6.2) catches every error, logs it with structured data (useful for ELK/Datadog), and returns a consistent, sanitized response to the user. This is key to building a 'boring' and reliable system.",
+      "nodeIds": [
+        "file:src/common/filters/all-exceptions.filter.ts"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "8. Access Control (RBAC)",
+      "description": "Finally, we enforce permissions using RolesGuards (Part 3.3). This stop shows how we use NestJS Reflectors to check for required roles on specific routes, ensuring that only authorized users (like Admins) can perform sensitive operations.",
+      "nodeIds": [
+        "file:src/common/guards/roles.guard.ts"
+      ]
+    }
+  ]
+}

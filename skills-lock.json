@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "mem0": {
+      "source": "mem0ai/mem0",
+      "sourceType": "github",
+      "skillPath": "skills/mem0/SKILL.md",
+      "computedHash": "ff492b780d85f69cf5ece7cbe745b1f6d6f3c8b9e70cc4a9512dce548e7b956e"
+    },
+    "mem0-cli": {
+      "source": "mem0ai/mem0",
+      "sourceType": "github",
+      "skillPath": "skills/mem0-cli/SKILL.md",
+      "computedHash": "d50e4d9c2c9cc02a727b11f66a15d3414f93b30cefb54f0709fcb9959b51bc79"
+    },
+    "mem0-integrate": {
+      "source": "mem0ai/mem0",
+      "sourceType": "github",
+      "skillPath": "skills/mem0-integrate/SKILL.md",
+      "computedHash": "95958ab122e7c754bdd025774e2046630a7976c76e6618785bd3d53a126e055c"
+    },
+    "mem0-test-integration": {
+      "source": "mem0ai/mem0",
+      "sourceType": "github",
+      "skillPath": "skills/mem0-test-integration/SKILL.md",
+      "computedHash": "cc8cda16c24174e4e637a110473f7980af7c86a0e13f0992180ffb3c2bf9bdf9"
+    },
+    "mem0-vercel-ai-sdk": {
+      "source": "mem0ai/mem0",
+      "sourceType": "github",
+      "skillPath": "skills/mem0-vercel-ai-sdk/SKILL.md",
+      "computedHash": "a9716cc748bd68b8c2632f3ad43a298f7a0c08fec9f5b61c670e4654ad98639c"
+    }
+  }
+}

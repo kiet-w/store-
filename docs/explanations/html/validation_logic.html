@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Logic & Decorators - Deep Dive</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.1.0/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'dark',
+            securityLevel: 'loose',
+            flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+        });
+    </script>
+    <style>
+        :root {
+            --bg: #1e1e1e;
+            --card-bg: #252526;
+            --border: #404040;
+            --text: #d4d4d4;
+            --header-text: #ffffff;
+            --kw: #569cd6;
+            --fn: #dcdcaa;
+            --str: #ce9178;
+            --comment: #6a9955;
+            --type: #4ec9b0;
+            --accent: #007acc;
+            --decorator: #dcdcaa;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 { color: var(--header-text); font-size: 2.5em; margin: 0; }
+        h2 { color: var(--kw); border-left: 4px solid var(--accent); padding-left: 15px; margin-top: 50px; }
+        h3 { color: var(--type); margin-top: 30px; }
+
+        .module-info {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-item b { color: var(--type); display: block; margin-bottom: 5px; }
+
+        .system-graph {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .method-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .method-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .method-name { font-family: 'Cascadia Code', 'Courier New', monospace; font-size: 1.2em; color: var(--fn); font-weight: bold; }
+        .method-tag { background: var(--accent); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.9em; font-weight: bold; }
+
+        .grid-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .technical-specs {
+            background: #1a1a1a;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Cascadia Code', monospace;
+            font-size: 0.9em;
+        }
+
+        .spec-row { margin-bottom: 10px; display: flex; }
+        .spec-label { color: #858585; width: 100px; flex-shrink: 0; }
+        .spec-value { color: var(--text); }
+        .decorator-list { color: var(--decorator); }
+
+        .logic-desc {
+            font-size: 0.95em;
+            color: #ccc;
+        }
+
+        .mermaid {
+            background: transparent !important;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mermaid-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        pre {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+
+        code { font-family: 'Cascadia Code', monospace; color: #ce9178; }
+
+        .tooltip-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: #2d2d30;
+            border-radius: 8px;
+            min-height: 80px;
+            border: 1px solid var(--border);
+        }
+
+        .highlight-box {
+            border-left: 4px solid #ce9178;
+            background: rgba(206, 145, 120, 0.1);
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Validation Logic & Decorators</h1>
+            <p style="color: #858585;">Deep dive into data transformation, validation pipeline, and custom metadata decorators in NestJS.</p>
+        </header>
+
+        <div class="module-info">
+            <div class="info-item">
+                <b>CORE RESPONSIBILITY</b>
+                Đảm bảo dữ liệu đầu vào (Request Payload/Query) được làm sạch, chuyển đổi đúng kiểu và kiểm chứng tính hợp lệ trước khi đi vào logic nghiệp vụ.
+            </div>
+            <div class="info-item">
+                <b>TECHNOLOGIES</b>
+                NestJS ValidationPipe, class-validator, class-transformer, Prisma Enums.
+            </div>
+        </div>
+
+        <div class="system-graph">
+            <h3 style="text-align: center; margin-top: 0;">Sơ đồ Hệ Thống (Validation Pipeline)</h3>
+            <svg viewBox="0 0 720 700" style="max-width: 600px; height: auto; display: block; margin: 0 auto;" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#858585" /></marker>
+                </defs>
+                <style>
+                    .c-blue { stroke: #569cd6; fill: #1a3a52; stroke-width: 2; cursor: pointer; }
+                    .c-teal { stroke: #4ec9b0; fill: #1a3a28; stroke-width: 2; cursor: pointer; }
+                    .c-amber { stroke: #dcdcaa; fill: #2d2516; stroke-width: 2; cursor: pointer; }
+                    .c-purple { stroke: #c586c0; fill: #2d1e35; stroke-width: 2; cursor: pointer; }
+                    .th { font: bold 14px sans-serif; fill: #fff; pointer-events: none; }
+                    .ts { font: 12px sans-serif; fill: #aaa; pointer-events: none; }
+                    .region { fill: none; stroke: #404040; stroke-dasharray: 8 4; stroke-width: 1; }
+                    .path-line { fill: none; stroke: #858585; stroke-width: 2; marker-end: url(#arr); }
+                </style>
+
+                <rect x="20" y="80" width="680" height="430" rx="15" class="region" />
+                <text x="30" y="100" class="ts" style="font-weight: bold;">VALIDATION PIPELINE</text>
+
+                <!-- Incoming Request -->
+                <g onclick="showTooltip('Request Data', 'Dữ liệu thô từ client (Query/Body)', 'JSON/String', 'Buffer Object')">
+                    <rect x="260" y="10" width="200" height="50" rx="8" class="c-blue"/>
+                    <text x="360" y="32" class="th" text-anchor="middle">Incoming Request</text>
+                    <text x="360" y="47" class="ts" text-anchor="middle">HTTP Protocol</text>
+                </g>
+
+                <path d="M 360 60 L 360 120" class="path-line" />
+
+                <!-- Transformation -->
+                <g onclick="showTooltip('Transformation Stage', 'Chuyển đổi kiểu dữ liệu (vd: string -> number) và làm sạch dữ liệu (trim)', 'Raw Object', 'Typed DTO Instance')">
+                    <rect x="260" y="130" width="200" height="60" rx="8" class="c-teal"/>
+                    <text x="360" y="155" class="th" text-anchor="middle">Transformation</text>
+                    <text x="360" y="175" class="ts" text-anchor="middle">class-transformer</text>
+                </g>
+
+                <path d="M 360 190 L 360 250" class="path-line" />
+
+                <!-- Validation -->
+                <g onclick="showTooltip('Validation Stage', 'Kiểm tra các ràng buộc (Constraints) như @IsInt, @IsPositive, @Max', 'Typed DTO', 'Validated DTO / Exception')">
+                    <rect x="260" y="260" width="200" height="60" rx="8" class="c-amber"/>
+                    <text x="360" y="285" class="th" text-anchor="middle">Validation</text>
+                    <text x="360" y="305" class="ts" text-anchor="middle">class-validator</text>
+                </g>
+
+                <path d="M 360 320 L 360 380" class="path-line" />
+
+                <!-- Guard -->
+                <g onclick="showTooltip('Authorization Guard', 'Đọc Metadata từ @Roles decorator và so sánh với role của user', 'User Object + Metadata', 'Boolean (Allow/Deny)')">
+                    <rect x="260" y="390" width="200" height="60" rx="8" class="c-purple"/>
+                    <text x="360" y="415" class="th" text-anchor="middle">RolesGuard</text>
+                    <text x="360" y="435" class="ts" text-anchor="middle">Reflector + Guards</text>
+                </g>
+
+                <!-- Tooltip -->
+                <rect id="tooltip-bg" x="40" y="550" width="640" height="100" rx="8" fill="#252526" stroke="#404040" />
+                <foreignObject x="60" y="560" width="600" height="80">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="color:#d4d4d4; font-family:sans-serif; font-size:12px;">
+                        <div id="tt-title" style="color:#fff; font-weight:bold; margin-bottom:4px;">Select a node...</div>
+                        <div id="tt-why" style="margin-bottom:8px; font-style: italic; color: #ce9178;">Click on any step above to see technical details.</div>
+                        <div style="display:flex; gap:20px;">
+                            <span style="color:#4ec9b0;">INPUT: <span id="tt-in">-</span></span>
+                            <span style="color:#569cd6;">OUTPUT: <span id="tt-out">-</span></span>
+                        </div>
+                    </div>
+                </foreignObject>
+            </svg>
+        </div>
+
+        <h2>1. Data Transfer Objects (DTO)</h2>
+
+        <div class="method-card">
+            <div class="method-header">
+                <div class="method-name">PaginationQueryDto</div>
+                <div class="method-tag">TRANSFORM & VALIDATE</div>
+            </div>
+            <div class="grid-detail">
+                <div class="technical-specs">
+                    <div class="spec-row"><span class="spec-label">File:</span><span class="spec-value">pagination-query.dto.ts</span></div>
+                    <div class="spec-row"><span class="spec-label">Fields:</span><span class="spec-value">page, limit, search, category, minPrice, maxPrice, sort</span></div>
+                    <div class="spec-row"><span class="spec-label">Logic:</span><span class="spec-value">@Type, @Transform, @IsInt, @Max</span></div>
+                </div>
+                <div class="logic-desc">
+                    <p><b>Tại sao viết như vậy?</b></p>
+                    <ul>
+                        <li><b>@Type(() => Number)</b>: Ép kiểu từ Query String (string) sang Number.</li>
+                        <li><b>@Transform</b>: Trim khoảng trắng và convert <code>""</code> sang <code>undefined</code>.</li>
+                        <li><b>Security</b>: <code>@Max(100)</code> chặn DoS attack qua tham số limit.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mermaid-container">
+<pre class="mermaid">graph TD
+    A["Raw Query Params"] --> B{Transform Stage}
+    B -- "@Type" --> C["Number Conversion"]
+    B -- "@Transform" --> D["Trim & Undefined"]
+    C --> E{Validation Stage}
+    D --> E
+    E -- Success --> F["Validated DTO"]
+    E -- Fail --> G["BadRequestException"]</pre>
+            </div>
+        </div>
+
+        <h2>2. Custom Decorators</h2>
+
+        <div class="method-card">
+            <div class="method-header">
+                <div class="method-name">@Roles(...roles: UserRole[])</div>
+                <div class="method-tag">METADATA</div>
+            </div>
+            <div class="grid-detail">
+                <div class="technical-specs">
+                    <div class="spec-row"><span class="spec-label">File:</span><span class="spec-value">roles.decorator.ts</span></div>
+                    <div class="spec-row"><span class="spec-label">Key:</span><span class="spec-value">'roles'</span></div>
+                    <div class="spec-row"><span class="spec-label">Usage:</span><span class="spec-value">@Roles(UserRole.ADMIN)</span></div>
+                </div>
+                <div class="logic-desc">
+                    <p><b>Sử dụng SetMetadata:</b></p>
+                    <p>Lưu trữ danh sách vai trò vào metadata của method hoặc class. <code>RolesGuard</code> sẽ đọc dữ liệu này qua <code>Reflector</code> để thực hiện kiểm tra quyền.</p>
+                    <div class="highlight-box">
+                        Sử dụng Rest Parameters (...roles) giúp cú pháp gọi linh hoạt hơn.
+                    </div>
+                </div>
+            </div>
+            <div class="mermaid-container">
+<pre class="mermaid">graph LR
+    A["Developer"] -- "Adds @Roles" --> B["Controller Method"]
+    B -- SetMetadata --> C[(Metadata Storage)]
+    D[RolesGuard] -- "Reflector.get" --> C
+    D -- Compare --> E{Access Decision}</pre>
+            </div>
+        </div>
+
+        <h2>3. Authorization Guards</h2>
+
+        <div class="method-card">
+            <div class="method-header">
+                <div class="method-name">RolesGuard</div>
+                <div class="method-tag">PROTECTION</div>
+            </div>
+            <div class="grid-detail">
+                <div class="technical-specs">
+                    <div class="spec-row"><span class="spec-label">File:</span><span class="spec-value">roles.guard.ts</span></div>
+                    <div class="spec-row"><span class="spec-label">Mechanism:</span><span class="spec-value">CanActivate</span></div>
+                    <div class="spec-row"><span class="spec-label">Dependency:</span><span class="spec-value">Reflector</span></div>
+                </div>
+                <div class="logic-desc">
+                    <p><b>Luồng xử lý:</b></p>
+                    <ol>
+                        <li>Lấy <code>requiredRoles</code> từ metadata của handler và class.</li>
+                        <li>Nếu không có role nào được yêu cầu, cho phép qua (<code>true</code>).</li>
+                        <li>Lấy <code>user.role</code> từ request.</li>
+                        <li>Nếu role không khớp, ném <code>ForbiddenException</code>.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="mermaid-container">
+<pre class="mermaid">graph TD
+    A[Request arrives] --> B[Get Metadata]
+    B --> C{Roles defined?}
+    C -- No --> D[Allow Access]
+    C -- Yes --> E[Get User Role from Req]
+    E --> F{Role matches?}
+    F -- Yes --> D
+    F -- No --> G[Throw ForbiddenException]</pre>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showTooltip(title, why, input, output) {
+            document.getElementById('tt-title').innerText = title;
+            document.getElementById('tt-why').innerText = why;
+            document.getElementById('tt-in').innerText = input;
+            document.getElementById('tt-out').innerText = output;
+            
+            const bg = document.getElementById('tooltip-bg');
+            bg.style.stroke = '#569cd6';
+            bg.style.strokeWidth = '3';
+            setTimeout(() => {
+                bg.style.strokeWidth = '1';
+                bg.style.stroke = '#404040';
+            }, 300);
+        }
+    </script>
+</body>
+</html>

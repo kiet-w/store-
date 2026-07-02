@@ -1,0 +1,7 @@
+{
+    "api_key": "100a1059-2c3c-492c-9806-425b2a9edb94",
+    "port": 8000,
+    "host": "127.0.0.1",
+    "enable_write_capabilities": true,
+    "system_instructions": "You are a Google Antigravity agent. You help the user manage their codebase, run commands, and write code."
+}
